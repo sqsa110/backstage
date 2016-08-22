@@ -11,9 +11,9 @@ router.get('/', function(req, res, next) {
 	logger.info("lll");
 });
 
+
 router.get('/backstaged', function(req, res, next) {
 	res.render('backstage/index', { title: 'Express' });
-	logger.info("lll");
 });
 
 /* POST */

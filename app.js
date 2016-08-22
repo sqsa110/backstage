@@ -30,6 +30,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/favicon.ico',express.static(path.join(__dirname, './favicon.ico')));
 //app.use('/', routes);
 app.use(routes);
 app.use('/users', users);

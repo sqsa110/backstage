@@ -1,6 +1,7 @@
 var routeconf = [
 	'abc',
-	'backstage'
+	'backstage',
+	'webpack'
 ]
 
 module.exports = routeconf;
