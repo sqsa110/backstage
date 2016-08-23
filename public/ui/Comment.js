@@ -1,4 +1,5 @@
 import React from 'react';
+import marked from '../bin/marked.min.js';
 
 let Comment = React.createClass({
 	rawMarkup(){
