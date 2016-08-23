@@ -1,6 +1,7 @@
 import React from 'react';
 import CommentList from './CommentList.js';
 import CommentForm from './CommentForm.js';
+import $ from '../bin/jquery.min.js';
 
 let CommentBox = React.createClass({
 	getInitialState(){

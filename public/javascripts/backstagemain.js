@@ -5,7 +5,7 @@ import CommentBox from '../ui/CommentBox.js'
 
 let main = function(){
     render(
-        <CommentBox />,
+        <CommentBox data={data} url="/api/comments" pollInterval={200000} />,
         document.getElementById('content')
     );
 }
