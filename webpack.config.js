@@ -5,7 +5,8 @@ var path = require('path');
 module.exports = {
     entry : {
 //        entry1 : './entry/entry1.js',
-        backstagemain : './public/javascripts/backstagemain.js'
+        backstagemain : './public/javascripts/backstagemain.js',
+        reactmain : './public/javascripts/reactmain.js'
 /*        common : [
             './node_modules/react/dist/react.min.js',
             './node_modules/react-dom/dist/react-dom.min.js'

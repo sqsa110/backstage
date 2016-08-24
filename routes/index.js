@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
 
 
 router.get('/backstaged', function(req, res, next) {
-	res.render('backstage/index', { title: 'Express' });
+	res.render('backstaged/index', { title: 'Express' });
 });
 
 router.post('/api/comments',function(req,res){
