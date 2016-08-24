@@ -16,13 +16,13 @@ router.get('/backstaged', function(req, res, next) {
 	res.render('backstage/index', { title: 'Express' });
 });
 
-router.post('/api/comments',function(req,res,next){
+router.post('/api/comments',function(req,res){
 	var data = [
 	    {author: "Pete Hunt", text: "This is one comment"},
 	    {author: "Jordan Walke", text: "This is *another* comment"}
 	];
 
-	res.rend(data);
+	res.send(data);
 });
 
 /* POST */
