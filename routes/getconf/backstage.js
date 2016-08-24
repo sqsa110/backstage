@@ -1,6 +1,6 @@
 function backstage (req,res){
 
-	res.render('backstages/index', { title: 'Express' });
+	res.render('backstage/index', { title: 'Express' });
 }
 
 module.exports = backstage;
