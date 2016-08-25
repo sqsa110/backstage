@@ -27,7 +27,7 @@ var LoginUser = React.createClass({
   render:function(){
     return (
       <div className="form-group">
-        <label for="username">用户名:</label>
+        <label htmlFor="username">用户名:</label>
         <input type="text" className="form-control" id="username" placeholder="用户名" />
       </div>
     )
@@ -38,7 +38,7 @@ var LoginPw = React.createClass({
   render:function(){
     return (
       <div className="form-group">
-        <label for="password">密码:</label>
+        <label htmlFor="password">密码:</label>
         <input type="password" className="form-control" id="password" placeholder="密码" />  
       </div>
     )
@@ -74,8 +74,8 @@ var LoginFooter = React.createClass({
 var LoginBox = React.createClass({
   render: function() {
     return (
-      <div className="modal fade login show in" id="loginModal" tabindex="-1">
-        <link href="test.css" rel="stylesheet" />
+      <div className="modal fade login show in" id="loginModal" htmlTabindex="-1">
+        <link href="ui/login/login.css" rel="stylesheet" />
         <div className="modal-dialog">
           <div className="modal-content">
             <LoginHeader />

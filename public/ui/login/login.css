@@ -1,0 +1,18 @@
+.login .row div {
+  text-align:center;
+}
+.login .modal-header {
+  padding-bottom:0;
+  font-size:20px;
+  font-weight: bold;
+  border:0px;
+}
+.login .modal-header .row {
+  margin-bottom:7px;
+}
+.login .modal-header .dash .active {
+  border-bottom:2px solid #000;
+}
+.login .modal-header .dash div {
+  border-bottom:1px solid #e5e5e5;
+}
