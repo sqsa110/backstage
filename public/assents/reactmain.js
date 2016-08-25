@@ -52,7 +52,7 @@
 
 	var _reactDom = __webpack_require__(3);
 
-	var _CommentBox = __webpack_require__(4);
+	var _CommentBox = __webpack_require__(5);
 
 	var _CommentBox2 = _interopRequireDefault(_CommentBox);
 
@@ -63,27 +63,6 @@
 	};
 
 	main();
-
-	/*
-	var React = require('react');
-	import { render } from 'react-dom';
-	var HelloworldComponent = React.createClass({
-	    displayName : 'HelloWorldComponent',
-	    render : function(){
-	        return (
-	            <div>Hello world</div>
-	        );
-	    }
-	});
-
-	let main = function(){
-	    render(
-	        <HelloworldComponent />,
-	        document.getElementById('example')
-	    );
-	}
-	main();
-	*/
 
 /***/ },
 /* 1 */
@@ -104,7 +83,8 @@
 	module.exports = (__webpack_require__(2))(34);
 
 /***/ },
-/* 4 */
+/* 4 */,
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -117,15 +97,15 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _CommentList = __webpack_require__(5);
+	var _CommentList = __webpack_require__(6);
 
 	var _CommentList2 = _interopRequireDefault(_CommentList);
 
-	var _CommentForm = __webpack_require__(8);
+	var _CommentForm = __webpack_require__(9);
 
 	var _CommentForm2 = _interopRequireDefault(_CommentForm);
 
-	var _jqueryMin = __webpack_require__(9);
+	var _jqueryMin = __webpack_require__(10);
 
 	var _jqueryMin2 = _interopRequireDefault(_jqueryMin);
 
@@ -189,7 +169,7 @@
 	exports.default = CommentBox;
 
 /***/ },
-/* 5 */
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -202,7 +182,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Comment = __webpack_require__(6);
+	var _Comment = __webpack_require__(7);
 
 	var _Comment2 = _interopRequireDefault(_Comment);
 
@@ -230,7 +210,7 @@
 	exports.default = CommentList;
 
 /***/ },
-/* 6 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -243,7 +223,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _markedMin = __webpack_require__(7);
+	var _markedMin = __webpack_require__(8);
 
 	var _markedMin2 = _interopRequireDefault(_markedMin);
 
@@ -272,7 +252,7 @@
 	exports.default = Comment;
 
 /***/ },
-/* 7 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global) {"use strict";
@@ -655,7 +635,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 8 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -698,7 +678,7 @@
 	exports.default = CommentForm;
 
 /***/ },
-/* 9 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module) {"use strict";
@@ -2908,7 +2888,7 @@
 	    });
 	  }), n.fn.size = function () {
 	    return this.length;
-	  }, n.fn.andSelf = n.fn.addBack, "function" == "function" && __webpack_require__(11) && !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
+	  }, n.fn.andSelf = n.fn.addBack, "function" == "function" && __webpack_require__(12) && !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
 	    return n;
 	  }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));var Lc = a.jQuery,
 	      Mc = a.$;return n.noConflict = function (b) {
@@ -2916,10 +2896,10 @@
 	  }, (typeof b === "undefined" ? "undefined" : _typeof(b)) === U && (a.jQuery = a.$ = n), n;
 	});
 	//# sourceMappingURL=jquery.min.map
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(10)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11)(module)))
 
 /***/ },
-/* 10 */
+/* 11 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -2935,7 +2915,7 @@
 
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {module.exports = __webpack_amd_options__;
