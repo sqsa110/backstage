@@ -74,7 +74,7 @@ var LoginFooter = React.createClass({
 var LoginBox = React.createClass({
   render: function() {
     return (
-      <div className="modal fade login show in" id="loginModal" htmlTabindex="-1">
+      <div className="modal fade login show in" id="loginModal" tabIndex="-1">
         <link href="ui/login/login.css" rel="stylesheet" />
         <div className="modal-dialog">
           <div className="modal-content">
