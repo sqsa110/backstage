@@ -1,12 +1,9 @@
 var express = require('express');
-var bodyParser = require('body-parser');
 var router = express.Router();
 var logger = require('../public/bin/log').logger('index');
 var getConf = require('./getconf');
 var postConf = require('./postconf');
 
-express.use(bodyParser.urlencoded({extended:false}));
-express.use(bodyParser.json());
 
 /* GET home page. */
 router.get('/', function(req, res, next) {

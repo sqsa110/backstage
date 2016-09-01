@@ -1,5 +1,4 @@
 var mysql = require('mysql');
-var bodyParser = require('body-parser');
 var myconf = require('../conf');
 
 function Login(req,res){
