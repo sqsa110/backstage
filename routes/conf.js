@@ -1,8 +1,8 @@
 var mysqlconf = {
 	host : 'localhost',
 	user : 'root',
-	password : 'p@ssw0rd',
-	database : 'books2'
+	password : '123456',
+	database : 'lxl'
 }
 
 exports.mysqlconf = mysqlconf;

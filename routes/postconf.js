@@ -1,5 +1,6 @@
 var routeconf = [
-	'aaa'
+	'aaa',
+	'login'
 ]
 
 module.exports = routeconf;
