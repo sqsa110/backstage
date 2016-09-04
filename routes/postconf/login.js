@@ -43,6 +43,7 @@ function Login(req,res){
 		for(var i=0,maxi=str.length-2;i<maxi;i++){
 			newstr += String.fromCharCode(strArr[i] - num);
 		}
+		console.log(newstr);
 		return newstr;
 	}
 
