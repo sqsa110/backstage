@@ -18,7 +18,7 @@ function Login(req,res){
 	var sql= "select u_mail,u_pw from users where u_mail = ? and u_pw = md5(?)";
 	var connection = mysql.createConnection(myconf.mysqlconf);
 	connection.connect();
-	connection.query(sql,[tables],function(err,row,fields){
+	connection.query(sql,[mail,pass],function(err,row,fields){
 		if(err){
 			throw err;
 		}
