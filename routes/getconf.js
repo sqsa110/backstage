@@ -2,7 +2,8 @@ var routeconf = [
 	'abc',
 	'react',
     'backstage',
-    'webpack'
+    'webpack',
+    'login'
 ]
 
 module.exports = routeconf;
