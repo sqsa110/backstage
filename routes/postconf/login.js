@@ -8,8 +8,8 @@ function Login(req,res){
 	var session = req.session;
 	var mail = asciiToString(req.body.name,5210);
 	var pass = asciiToString(req.body.pass,5220);
-	console.log(mail.length);
-	console.log(pass.length);
+	console.log(mail);
+	console.log(pass);
 	selectSqlFn(mail,pass);
 
 	function selectSqlFn(mail,pass){
@@ -43,7 +43,6 @@ function Login(req,res){
 		for(var i=0,maxi=str.length-2;i<maxi;i++){
 			newstr += String.fromCharCode(strArr[i] - num);
 		}
-		console.log(newstr);
 		return newstr;
 	}
 
