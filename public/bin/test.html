@@ -352,7 +352,6 @@ ul li {
   }
   LoginServer.prototype.login = function(data){
     var This = this;
-    console.log(data);
     setTimeout(function(){
       $.ajax({
         url:this.props.loginconf.loginUrl,
@@ -380,8 +379,8 @@ ul li {
     for(var i=0,maxi=password.length;i<maxi;i++){
       passwords += password.charCodeAt(i)-0+5220 + '|';
     }
-    data.username = usernames;
-    data.password = passwords;
+    data.name = usernames;
+    data.pass = passwords;
     return data;
   }
   LoginServer.prototype.selectUsername = function(username,callback){

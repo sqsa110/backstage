@@ -3,8 +3,19 @@ var myconf = require('../conf');
 
 function Login(req,res){
 	console.log(req.body);
-	var tables = 1;
-	var sql= "select * from users where u_id = ?";
+	var mailArr = req.body.name.split('|');
+	var passArr = req.body.pass.split('|');
+	var mail,pass;
+	for(var i=0,maxi=mailArr.length;i<maxi;i++){
+		mail += String.fromCharCode(mailArr[i] - 5210);
+	}
+	for(var i=0,maxi=passArr.length;i<maxi;i++){
+		pass += String.fromCharCode(passArr[i] - 5220);
+	}
+	console.log(mail);
+	console.log(pass);
+
+	var sql= "select u_mail,u_pw from users where u_mail = ? and u_pw = md5(?)";
 	var connection = mysql.createConnection(myconf.mysqlconf);
 	connection.connect();
 	connection.query(sql,[tables],function(err,row,fields){
