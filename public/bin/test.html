@@ -350,15 +350,16 @@ ul li {
     var data = this.loginData(username,password);
     this.login(data);
   }
-  LoginServer.prototype.login = function(){
+  LoginServer.prototype.login = function(data){
     var This = this;
+    console.log(data);
     setTimeout(function(){
       $.ajax({
         url:this.props.loginconf.loginUrl,
         dataType:'json',
         type:'POST',
         cache:false,
-        data:This.data,
+        data:data,
         success:function(data){
           this.setState({off:false});
           console.log(data);
