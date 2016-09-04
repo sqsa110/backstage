@@ -8,6 +8,8 @@ function Login(req,res){
 	var session = req.session;
 	var mail = asciiToString(req.body.name,5210);
 	var pass = asciiToString(req.body.pass,5220);
+	console.log(mail.length);
+	console.log(pass.length);
 	selectSqlFn(mail,pass);
 
 	function selectSqlFn(mail,pass){
@@ -20,6 +22,7 @@ function Login(req,res){
 				throw err;
 			}
 			var data = {};
+			console.log(row.length);
 			if(row.length == 1){
 				data.code = 1000;
 				data.info = "登录成功!";
