@@ -22,7 +22,7 @@ function Login(req,res){
 				throw err;
 			}
 			var data = {};
-			console.log(row.length);
+			console.log(row);
 			if(row.length == 1){
 				data.code = 1000;
 				data.info = "登录成功!";
@@ -43,6 +43,7 @@ function Login(req,res){
 		for(var i=0,maxi=str.length-2;i<maxi;i++){
 			newstr += String.fromCharCode(strArr[i] - num);
 		}
+		console.log(maxi);
 		return newstr;
 	}
 
