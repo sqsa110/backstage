@@ -15,8 +15,8 @@ function Login(req,res){
 		pass += String.fromCharCode(passArr[i] - 5220);
 		console.log(pass);
 	}
-	console.log(mail);
-	console.log(pass);
+	console.log(mail.length);
+	console.log(pass.length);
 
 	var sql= "select u_mail,u_pw from users where u_mail = ? and u_pw = md5(?)";
 	var connection = mysql.createConnection(myconf.mysqlconf);
