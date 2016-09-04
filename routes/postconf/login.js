@@ -5,7 +5,8 @@ function Login(req,res){
 	console.log(req.body);
 	var mailArr = req.body.name.split('|');
 	var passArr = req.body.pass.split('|');
-	var mail,pass;
+	var mail = '';
+	var pass = '';
 	for(var i=0,maxi=mailArr.length;i<maxi;i++){
 		mail += String.fromCharCode(mailArr[i] - 5210);
 	}
