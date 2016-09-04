@@ -9,9 +9,11 @@ function Login(req,res){
 	var pass = '';
 	for(var i=0,maxi=mailArr.length;i<maxi;i++){
 		mail += String.fromCharCode(mailArr[i] - 5210);
+		console.log(mail);
 	}
 	for(var i=0,maxi=passArr.length;i<maxi;i++){
 		pass += String.fromCharCode(passArr[i] - 5220);
+		console.log(pass);
 	}
 	console.log(mail);
 	console.log(pass);
