@@ -3,6 +3,8 @@ var path = require('path');
 var favicon = require('serve-favicon');
 //  var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var expressSession = require('express-session');
+var RedisStore = require('connect-redis')(expressSession);
 var bodyParser = require('body-parser');
 var log4js = require('log4js');
 var routes = require('./routes/index');
@@ -24,10 +26,20 @@ app.set('view engine','html');
 //  app.use(logger('dev'));
 //  
 app.use(log4js.connectLogger(log.logger('normal'), {level:'auto', format:':method :url'}));
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(cookieParser('backstage'));
+app.use(expressSession({
+  resave : false,
+  saveUninitialized:true,
+  store: new RedisStore({
+    host : '127.0.0.1',
+    port : 6379,
+    ttl : 60 * 60
+  }),
+  secret : 'backstage'
+}));
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/favicon.ico',express.static(path.join(__dirname, './favicon.ico')));

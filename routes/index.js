@@ -7,8 +7,14 @@ var postConf = require('./postconf');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+	var session = req.session;
+	if(session.signning){
+		session.signning = true;
+		session.uId = session.uId;
+		session.uMail = session.uMail;
+	}
 	
-	res.render('index', { title: 'Express' });
+//	res.render('index', { title: 'Express' });
 	logger.info("lll");
 });
 
