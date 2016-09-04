@@ -7,11 +7,11 @@ function Login(req,res){
 	var passArr = req.body.pass.split('|');
 	var mail = '';
 	var pass = '';
-	for(var i=0,maxi=mailArr.length;i<maxi;i++){
+	for(var i=0,maxi=mailArr.length-1;i<maxi;i++){
 		mail += String.fromCharCode(mailArr[i] - 5210);
 		console.log(mail);
 	}
-	for(var i=0,maxi=passArr.length;i<maxi;i++){
+	for(var i=0,maxi=passArr.length-1;i<maxi;i++){
 		pass += String.fromCharCode(passArr[i] - 5220);
 		console.log(pass);
 	}
