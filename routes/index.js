@@ -23,6 +23,19 @@ router.get('/backstaged', function(req, res, next) {
 	res.render('backstaged/index', { title: 'Express' });
 });
 
+router.post('/', function(req, res, next) {
+	var session = req.session;
+	if(session.signning){
+		session.signning = true;
+		session.uId = session.uId;
+		session.uMail = session.uMail;
+	}
+	console.log(session);
+//	res.render('index', { title: 'Express' });
+	logger.info("lll");
+});
+
+
 router.post('/api/comments',function(req,res){
 	var data = [
 	    {author: "Pete Hunt", text: "This is one comment"},
