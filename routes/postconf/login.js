@@ -8,8 +8,6 @@ function Login(req,res){
 	var session = req.session;
 	var mail = asciiToString(req.body.name,5210);
 	var pass = asciiToString(req.body.pass,5220);
-	console.log(mail);
-	console.log(pass);
 	selectSqlFn(mail,pass);
 
 	function selectSqlFn(mail,pass){
@@ -26,7 +24,7 @@ function Login(req,res){
 			if(row.length == 1){
 				data.code = 1000;
 				data.info = "登录成功!";
-				asciiToString(session,row[0]);
+				setSession(session,row[0]);
 			} else {
 				data.code = 1001;
 				data.info = "用户名或密码不正确!"
@@ -43,7 +41,6 @@ function Login(req,res){
 		for(var i=0,maxi=strArr.length-1;i<maxi;i++){
 			newstr += String.fromCharCode(strArr[i] - num);
 		}
-		console.log(maxi);
 		return newstr;
 	}
 
