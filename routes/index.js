@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
 		session.uId = session.uId;
 		session.uMail = session.uMail;
 	}
-	
+	console.log(session);
 //	res.render('index', { title: 'Express' });
 	logger.info("lll");
 });
