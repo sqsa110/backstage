@@ -1,0 +1,411 @@
+<!DOCTYPE HTML> 
+<html> 
+<head> 
+<meta charset="utf-8"> 
+<title></title> 
+<link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<script src="./jquery.min.js" type="text/javascript"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="http://cdn.bootcss.com/react/15.3.1/react.min.js"></script>
+<script src="http://cdn.bootcss.com/react/15.3.1/react-dom.min.js"></script>
+<script src="http://cdn.bootcss.com/immutable/3.8.1/immutable.min.js"></script>
+<script src="./browser.min.js"></script>
+<script src="./marked.min.js"></script>
+
+<style type="text/css">
+ul {
+  padding:0;
+}
+ul li {
+  list-style-type:none;
+}
+.login .row div {
+  text-align:center;
+}
+.login .modal-header {
+  padding-bottom:0;
+  font-size:20px;
+  font-weight: bold;
+  border:0px;
+}
+.login .modal-header a {
+  display:block;
+}
+.login .modal-header .row {
+  margin-bottom:7px;
+}
+.login .modal-header .dash .active {
+  border-bottom:2px solid #000;
+}
+.login .modal-header .dash div {
+  border-bottom:1px solid #e5e5e5;
+}
+
+</style>
+</head>
+<body>
+<!-- Button trigger modal 
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Launch demo modal
+</button>
+-->
+<!-- Modal -->
+
+<div class="modal fade login " id="myModal" tabIndex="-1">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xs-6">登陆</div>
+            <div class="col-xs-6">快速注册</div>
+          </div>
+          <div class="row dash">
+            <div class="col-xs-2"></div>
+            <div class="col-xs-2 line active"></div>
+            <div class="col-xs-2"></div>
+            <div class="col-xs-2"></div>
+            <div class="col-xs-2 line"></div>
+            <div class="col-xs-2"></div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="container-fluid">
+              <div class="form-group">
+                <label for="username">用户名:</label>
+                <input type="text" class="form-control" id="username" placeholder="用户名">
+              </div>
+              <div class="form-group">
+                <label for="password">密码:</label>
+                <input type="password" class="form-control" id="username" placeholder="用户名">  
+              </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary">登陆</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="login"></div>
+
+<script type="text/babel">
+  var LoginHeader = React.createClass({
+    titleOnclick(e){
+      console.log(e.target);
+    },
+    render:function(){
+      return (
+        <div className="modal-header">
+          <div className="container-fluid">
+            <div className="row title">
+              <div className="col-xs-6"><a href="javascript:;" onClick={this.titleOnclick}>登陆</a></div>
+              <div className="col-xs-6"><a href="javascript:;" onClick={this.titleOnclick}>快速注册</a></div>
+            </div>
+            <div className="row dash">
+              <div className="col-xs-2"></div>
+              <div className="col-xs-2 line"></div>
+              <div className="col-xs-2"></div>
+              <div className="col-xs-2"></div>
+              <div className="col-xs-2 line"></div>
+              <div className="col-xs-2"></div>
+            </div>
+          </div>
+        </div>
+      )
+    }
+  });
+
+  var LoginWarning = React.createClass({
+    rawMarkup(){
+      var rawMarkup = marked(this.props.children.toString(),{sanitize:true});
+      return {__html:rawMarkup};
+    },
+    render(){
+      var hide = this.props.hide ? 'hide' : ''
+      var classd = this.props.classd + ' ' + hide;
+      return (
+        <li className={classd}><span dangerouslySetInnerHTML={this.rawMarkup()}></span></li>
+      )
+    }
+  });
+
+  var LoginUser = React.createClass({
+    shouldComponentUpdate(nextProps){
+      return this.props.data !== nextProps.data;
+    },
+    verifyFn:function(e){
+      var This = this;
+      clearTimeout(this.timer);
+      this.timer = setTimeout(function(){
+        var valueus = This.refs.username.value.trim();
+        var len = valueus.length;
+        var key = null;
+        if(len == 0){
+          key="null";
+        } else if(len <= 6){
+          key="minlen";
+        } else {
+          key="success";
+        }
+        This.props.userOnchange(This.props.data,key,valueus);
+      },300);
+      
+    },
+    timer : null,
+    render:function(){
+      var verifys = this.props.data.map(function(comment){
+        return (
+          <LoginWarning classd={comment.get("class")} hide={comment.get("hide")}>
+            {comment.get("text")}
+          </LoginWarning>
+        );
+      });
+      return (
+        <div className="form-group">
+          <label htmlFor="username">用户名:</label>
+          <input type="text" className="form-control" id="username" placeholder="用户名" ref="username" onChange={this.verifyFn} />
+          <ul>
+            {verifys}
+          </ul>
+        </div>
+      )
+    }
+  });
+
+  var LoginPw = React.createClass({
+    shouldComponentUpdate(nextProps){
+      return this.props.data !== nextProps.data;
+    },
+    verifyFn:function(e){
+
+      var This = this;
+      clearTimeout(this.timer);
+      this.timer = setTimeout(function(){
+        var valuepw = This.refs.password.value.trim();
+        var len = valuepw.length;
+        var key = null;
+        if(len == 0){
+          key="null";
+        } else if(len <= 6){
+          key="minlen";
+        } else {
+          key="success";
+        }
+        This.props.passwdOnchage(This.props.data,key,valuepw);
+      },300);
+      
+    },
+    timer : null,
+    render:function(){
+      var verifys = this.props.data.map(function(comment){
+        return (
+          <LoginWarning classd={comment.get("class")} hide={comment.get("hide")}>
+            {comment.get("text")}
+          </LoginWarning>
+        );
+      });
+      return (
+        <div className="form-group">
+          <label htmlFor="password">密码:</label>
+          <input type="password" className="form-control" id="password" placeholder="密码" ref="password" onChange={this.verifyFn} />
+          <ul>
+            {verifys}
+          </ul>
+        </div>
+      )
+    }
+  });
+
+  var LoginBody = React.createClass({
+    render:function(){
+      return (
+        <div className="modal-body">
+          <div className="container-fluid">
+            <LoginUser data={this.props.usernamedata} userOnchange={this.props.userOnchange} />
+            <LoginPw data={this.props.passworddata} passwdOnchage={this.props.passwdOnchange} />
+          </div>
+        </div>
+      )
+    }
+  });
+
+  var LoginFooter = React.createClass({
+    render:function(){
+      return (
+        <div className="modal-footer">
+          <button type="button" className="btn btn-default" data-dismiss="modal">取消</button>
+          <button type="submit" className="btn btn-primary">登陆</button>
+        </div>
+      )
+    }
+  });
+
+
+  var LoginBox = React.createClass({
+    handleSubmit(e){
+      e.preventDefault();
+      var infos = this.state.infos;
+      if (this.state.off && infos.username && infos.password){
+        return;
+      }
+      this.setState({off:true});
+
+      var conf = {
+        this : this
+      }
+      var loginServer = new LoginServer(conf);
+      loginServer.init(this.state.valueuser,this.state.valuepw);
+
+    },
+    getInitialState(){
+      var usernamedata = [
+        {"author":"success","text":"√","class":"text-success",hide:true},
+        {"author":"null","text":"请输入用户名","class":"text-danger",hide:true},
+        {"author":"minlen","text":"用户名过短","class":"text-danger",hide:true}
+      ]
+      var passworddata = [
+        {"author":"success","text":"√","class":"text-success",hide:true},
+        {"author":"null","text":"请输入密码","class":"text-danger",hide:true},
+        {"author":"minlen","text":"密码过短","class":"text-danger",hide:true},
+        {"author":"reg","text":"密码错误","class":"text-danger",hide:true}
+      ]
+      return {
+        usernamedata : Immutable.fromJS(usernamedata),
+        passworddata : Immutable.fromJS(passworddata),
+        valueuser : '',
+        valuepw : '',
+        infos : {username:true,password:false},
+        off : false
+      }
+    },
+    userOnchange : function(data,key,value){
+      data = this.dataproc(data,key,'username');
+      this.setState({usernamedata:data,valueuser:value});
+    },
+    passwdOnchange : function(data,key,value){
+      data = this.dataproc(data,key,'password');
+      this.setState({passworddata:data,valuepw:value});
+    },
+    dataproc :function(datas,key,info){
+      var infos = this.state.infos;
+      var list = datas;
+      var This = this;
+      datas.forEach(function(data,index){
+        if(data.get('author') == key){
+          list = list.setIn([index,'hide'],false);
+          if(key == 'success'){
+            infos[info] = true;
+          }
+        } else {
+          list = list.setIn([index,'hide'],true);
+          if(key == 'success'){
+            infos[info] = false;
+          }
+        }
+        This.setState({info:infos});
+        return true;
+      });
+      return list;
+
+    },
+    render: function() {
+      return (
+        <div className="modal fade login show in" id="loginModal" tabindex="-1">
+          <link href="test.css" rel="stylesheet" />
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <form action='../login' method='post' onSubmit={this.handleSubmit} >
+                <LoginHeader />
+                <LoginBody usernamedata={this.state.usernamedata} userOnchange={this.userOnchange} passworddata={this.state.passworddata} passwdOnchange={this.passwdOnchange} ref="loginBody" />
+                <LoginFooter />
+              </form>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  });
+
+  var loginconf = {
+    loginUrl : '../login',
+    selectUsernameUrl : '../selectlogin'
+  }
+
+  ReactDOM.render(
+    <LoginBox loginconf={loginconf} />,
+    document.getElementById('login')
+  );
+
+  function LoginServer(conf){
+    this._this = conf.this;
+  }
+  LoginServer.prototype.init = function(username,password){
+    var data = this.loginData(username,password);
+    this.login(data);
+  }
+  LoginServer.prototype.login = function(){
+    var This = this;
+    setTimeout(function(){
+      $.ajax({
+        url:this.props.loginconf.loginUrl,
+        dataType:'json',
+        type:'POST',
+        cache:false,
+        data:This.data,
+        success:function(data){
+          this.setState({off:false});
+          console.log(data);
+        }.bind(this),
+        error:function(xhr,status,err){
+          console.error(this.props.loginconf.loginUrl,status,err.toString());
+        }.bind(this)
+      });
+    }.bind(this._this),300);
+  }
+  LoginServer.prototype.loginData = function(username,password){
+    var data = {};
+    var username = '';
+    var password = '';
+    for(var i=0,maxi=username.length;i<maxi;i++){
+      username += username.charCodeAt(i)-0+5210 + '|';
+    }
+    for(var i=0,maxi=password.length;i<maxi;i++){
+      password += password.charCodeAt(i)-0+5220 + '|';
+    }
+    data.username = username;
+    data.password = password;
+    return data;
+  }
+  LoginServer.prototype.selectUsername = function(username,callback){
+    var This = this;
+    setTimeout(function(){
+      $.ajax({
+        url:this.props.loginconf.selectUsernameUrl,
+        dataType:'json',
+        type:'POST',
+        cache:false,
+        data:{username:username},
+        success:function(data){
+          callback();
+          console.log(data);
+        }.bind(this),
+        error:function(xhr,status,err){
+          console.error(this.props.loginconf.selectUsernameUrl);
+        }.bind(this)
+      });
+    }.bind(this._this),300)
+  }
+
+
+
+
+</script>
+</body>
+</html>
