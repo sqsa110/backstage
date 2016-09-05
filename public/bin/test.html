@@ -419,9 +419,9 @@ ul li {
       var This = this;
       list.forEach(function(data,index){
         if(data.get('author') == 'test'){
-          list = list.setIn([index,'hide'],true);
-        } else {
           list = list.setIn([index,'hide'],false);
+        } else {
+          list = list.setIn([index,'hide'],true);
         }
 
         return true;
