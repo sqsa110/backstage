@@ -274,7 +274,7 @@ ul li {
         {"author":"success","text":"√","class":"text-success",hide:true},
         {"author":"null","text":"请输入密码","class":"text-danger",hide:true},
         {"author":"minlen","text":"密码过短","class":"text-danger",hide:true},
-        {"author":"reg","text":"密码错误","class":"text-danger",hide:true}
+        {"author":"test","text":"用户名密码错误","class":"text-danger",hide:true}
       ]
       return {
         usernamedata : Immutable.fromJS(usernamedata),
@@ -350,7 +350,7 @@ ul li {
     var data = this.loginData(username,password);
     this.login(data);
   }
-  LoginServer.prototype.login = function(data){
+  LoginServer.prototype.login = function(datas){
     var This = this;
     setTimeout(function(){
       $.ajax({
@@ -358,10 +358,19 @@ ul li {
         dataType:'json',
         type:'POST',
         cache:false,
-        data:data,
+        data:datas,
         success:function(data){
           this.setState({off:false});
-          console.log(data);
+          switch(data.code){
+          	case 1000:
+				This.loginSuccessFn(this);
+          		break;
+          	case 1001:
+
+          		break;
+          	default:
+          		console.log('default');
+          }
         }.bind(this),
         error:function(xhr,status,err){
           console.error(this.props.loginconf.loginUrl,status,err.toString());
@@ -401,6 +410,21 @@ ul li {
         }.bind(this)
       });
     }.bind(this._this),300)
+  }
+  LoginServer.prototype.loginSuccessFn = function(state){
+		
+      var list = state.passworddata;
+      var This = this;
+      list.forEach(function(data,index){
+        if(data.get('author') == 'test'){
+          list = list.setIn([index,'hide'],true);
+        } else {
+          list = list.setIn([index,'hide'],false);
+        }
+
+        return true;
+      });
+      return list;
   }
 
 
