@@ -414,6 +414,7 @@ ul li {
   LoginServer.prototype.loginSuccessFn = function(state){
 		
       var list = state.passworddata;
+      console.log(list);
       var This = this;
       list.forEach(function(data,index){
         if(data.get('author') == 'test'){
