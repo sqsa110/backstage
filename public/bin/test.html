@@ -428,6 +428,70 @@ ul li {
       });
       return list;
   }
+  (function($){
+	  function CookieOper(key,value,time){
+
+		this.init(key,value,time);
+	  }
+	  CookieOper.prototype.type = function(key,value,time){
+		if(Object.prototype.toString.call(key) == '[object Object]'){
+			if(Object.prototype.toString.call(value) == '[object Date]'){
+				for(var i in key){
+					this.set(i,key[i],value);
+				}
+			} else {
+				for(var i in key){
+					this.set(i,key[i]);
+				}
+			}
+		} else if(Object.prototype.toString.call(key) == '[object String]'){
+			
+		} else if(Object.prototype.toString.call(key) == '[object Array]'){
+
+		}
+
+
+
+		if(value == false){
+			if(Object.prototype.toString.call(key) == '[object Object]'){
+				
+				if(Object.prototype.toString.call(value) == '[object Number]'){
+					for(var i in key){
+						this.set(i,key[i],value);
+					}
+				} else {
+					for(var i in key){
+						this.set(i,key[i]);
+					}
+				}
+				
+			} else if(Object.prototype.toString.call(key) == '[object String]'){
+				
+			}
+		} else if(value == true) {
+			
+		} else if(){
+
+		}
+	  }
+	  CookieOper.prototype.datetime = function(key,value,time){
+		if(Object.prototype.toString.call(time) == '[object Date]'){
+		
+		}
+	  }
+	  CookieOper.prototype.set = function(key,value,time){
+
+	  }
+	  CookieOper.prototype.get = function(key){
+
+	  }
+	  CookieOper.prototype.clear = function(key){
+
+	  }
+	  $.fn.cookieOper = function(key,value,time){
+	  	return new CookieOper(key,value,time)
+	  }
+  })($)
 
 
 
