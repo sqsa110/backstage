@@ -363,14 +363,15 @@ ul li {
           this.setState({off:false});
           switch(data.code){
           	case 1000:
-				This.loginSuccessFn(this.state);
           		break;
           	case 1001:
-
+				var states = This.loginErrorFn(this.state);
+				this.setState({passworddata:states})
           		break;
           	default:
           		console.log('default');
           }
+
         }.bind(this),
         error:function(xhr,status,err){
           console.error(this.props.loginconf.loginUrl,status,err.toString());
@@ -411,7 +412,7 @@ ul li {
       });
     }.bind(this._this),300)
   }
-  LoginServer.prototype.loginSuccessFn = function(state){
+  LoginServer.prototype.loginErrorFn = function(state){
 		
       var list = state.passworddata;
       console.log(list);
