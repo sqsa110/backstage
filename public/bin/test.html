@@ -114,7 +114,7 @@ ul li {
     //读取cookie方法
     CookieOper.prototype.get = function(key){
       var cookied = document.cookie.split('; ');
-      return cookied[i].substring(cookied[i].indexOf('=')+1);
+      return cookied.substring(cookied.indexOf('=')+1);
     }
 
     //清除cookie方法
