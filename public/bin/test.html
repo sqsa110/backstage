@@ -118,7 +118,7 @@ ul li {
       for(var i=0,maxi=cookied.length;i<maxi;i++){
         console.log(cookied[i].substring(0,cookied[i].indexOf('=')));
         if(cookied[i].substring(0,cookied[i].indexOf('='))){
-         cookiedArr.push(cookied[i].substring(cookied[i].indexOf('='),cookied[i].length-1));
+         cookiedArr.push(cookied[i].substring(cookied[i].indexOf('=')+1,cookied[i].length));
         }
       }
       return cookiedArr;
