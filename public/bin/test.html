@@ -131,6 +131,9 @@ ul li {
 </script>
 <script>
   $.cookieOper('aa','bb');
+  $.cookieOper(['aa'],true);
+  $.cookieOper({bb:'cc',dd:'ee',ff:'gg'});
+  $.cookieOper(['bb','dd']);
 </script>
 </head>
 <body>
