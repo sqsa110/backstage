@@ -115,11 +115,34 @@ ul li {
     CookieOper.prototype.get = function(key){
       var cookied = document.cookie.split('; ');
       var cookiedArr= [];
+      var 
       for(var i=0,maxi=cookied.length;i<maxi;i++){
-        console.log(cookied[i].substring(0,cookied[i].indexOf('=')));
-        if(cookied[i].substring(0,cookied[i].indexOf('=')) == key){
-         cookiedArr.push(cookied[i].substring(cookied[i].indexOf('=')+1,cookied[i].length));
+        var temp = cookied[i].substring(0,cookied[i].indexOf('='));
+        var keyArrType = null;
+        if(Object.prototype.toString.call(key) == '[object Array]'){
+          keyArrType = true;
         }
+
+        if(keyArr){
+          $.each(key,function(index,value){
+            var val = pushCookie(value,key)
+            if(typeof(val) != "undefined"){
+              cookiedArr.push(val);
+            }
+          }.bind(this));
+        } else {
+          var val = pushCookie(cookied[i],key)
+          if(typeof(val) != "undefined"){
+            cookiedArr.push(val);
+          }
+        }
+
+        function pushCookie(cookied,key){
+          if(temp == key){
+            return cookied.substring(cookied.indexOf('=')+1,cookied.length);
+          }
+        }
+
       }
       return cookiedArr;
     }
