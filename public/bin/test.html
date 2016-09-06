@@ -116,8 +116,8 @@ ul li {
       var cookied = document.cookie.split('; ');
       var cookiedArr= [];
       for(var i=0,maxi=cookied.length;i<maxi;i++){
-        console.log(cookied[i].subString(0,cookied[i].indexOf('=')-1));
-        if(cookied[i].subString(0,cookied[i].indexOf('=')-1)){
+        console.log(cookied[i].substring(0,cookied[i].indexOf('=')-1));
+        if(cookied[i].substring(0,cookied[i].indexOf('=')-1)){
          cookiedArr.push(cookied[i].substring(cookied[i].indexOf('=')+1,cookied[i].length-1));
         }
       }
