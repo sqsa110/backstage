@@ -114,6 +114,12 @@ ul li {
     //读取cookie方法
     CookieOper.prototype.get = function(key){
       var cookied = document.cookie.split('; ');
+      var cookiedArr= [];
+      for(var i=0,maxi=cookied.length;i<maxi;i++){
+        if(){
+         cookiedArr.push(cookied[i].substring(cookied[i].indexOf('=')+1));
+        }
+      }
       return cookied.substring(0,cookied.indexOf('=')+1);
     }
 
