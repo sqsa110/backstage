@@ -89,7 +89,7 @@ ul li {
           var arr = [];
           $.each(key,function(index,value){
             arr.push(this.get(value));
-          });
+          }.bind(this));
           return arr;
         }
       }
@@ -131,7 +131,8 @@ ul li {
 </script>
 <script>
   $.cookieOper('aa','bb');
-  $.cookieOper(['aa'],true);
+  console.log($.cookieOper(['aa'],true));
+  console.log($.cookieOper('aa',true));
   $.cookieOper({bb:'cc',dd:'ee',ff:'gg'});
   $.cookieOper(['bb','dd']);
 </script>
