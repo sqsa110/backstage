@@ -122,9 +122,11 @@ ul li {
       this.set(key,'',-1);
     }
 
-    $.fn.cookieOper = function(key,value,time){
-      return new CookieOper(key,value,time)
-    }
+    $.extend({
+      cookieOper : function(key,value,time){
+        return new CookieOper(key,value,time);
+      }
+    });
   })($);
 </script>
 <script>
