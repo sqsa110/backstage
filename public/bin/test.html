@@ -115,7 +115,6 @@ ul li {
     CookieOper.prototype.get = function(key){
       var cookied = document.cookie.split('; ');
       var cookiedArr= [];
-      var 
       for(var i=0,maxi=cookied.length;i<maxi;i++){
         var temp = cookied[i].substring(0,cookied[i].indexOf('='));
         var keyArrType = null;
