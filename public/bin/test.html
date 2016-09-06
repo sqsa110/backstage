@@ -42,6 +42,94 @@ ul li {
 }
 
 </style>
+<script>
+  (function($){
+
+    function CookieOper(key,value,time){
+      return this.init(key,value,time) || this;
+    }
+
+    CookieOper.prototype.init = function(key,value,time){
+
+      //判断是否是集合 批量存储
+      if(Object.prototype.toString.call(key) == '[object Object]'){
+
+        //判断是否设置过期时间
+        if(Object.prototype.toString.call(value) == '[object Number]'){
+          for(var i in key){
+            this.set(i,key[i],value);
+          }
+        } else {
+          for(var i in key){
+            this.set(i,key[i]);
+          }
+        }
+
+      //判断是否为字符串  单个存储
+      } else if(Object.prototype.toString.call(key) == '[object String]'){
+        //判断是否读写
+        if(value != true){
+          //判断是否设置过期时间
+          if(Object.prototype.toString.call(time) == '[object Number]'){
+            this.set(key,value,time);
+          } else {
+            this.set(key,value);
+          }
+        } else {
+          return this.get(key);
+        }
+      //判断是否为数组 删除cookie
+      } else if(Object.prototype.toString.call(key) == '[object Array]'){
+
+        if(value != true){
+          $.each(key,function(index,value){
+            this.clear(value);
+          });
+        } else {
+          var arr = [];
+          $.each(key,function(index,value){
+            arr.push(this.get(value));
+          });
+          return arr;
+        }
+      }
+
+    }
+
+    //设置cookie方法
+    CookieOper.prototype.set = function(key,value,time){
+
+      var expires;
+      if(time){
+        var myDate = new Date();
+        myDate.setTime(myDate.getTime() + (time*24*60*60*1000));
+        expires = "expires=" + myDate.toUTCString();
+        document.cookie = key + "=" + value + "; " + expires;
+      } else {
+        document.cookie = key + "=" + value + "; ";
+      }
+
+    }
+
+    //读取cookie方法
+    CookieOper.prototype.get = function(key){
+      var cookied = document.cookie.split('; ');
+      return cookied[i].substring(cookied[i].indexOf('=')+1);
+    }
+
+    //清除cookie方法
+    CookieOper.prototype.clear = function(key){
+      this.set(key,'',-1);
+    }
+
+    $.fn.cookieOper = function(key,value,time){
+      return new CookieOper(key,value,time)
+    }
+  })($);
+</script>
+<script>
+  $.cookieOper('aa','bb');
+</script>
 </head>
 <body>
 <!-- Button trigger modal 
@@ -49,6 +137,7 @@ ul li {
   Launch demo modal
 </button>
 -->
+
 <!-- Modal -->
 
 <div class="modal fade login " id="myModal" tabIndex="-1">
@@ -435,89 +524,6 @@ ul li {
 
 
 </script>
-<script>
-  (function($){
 
-	  function CookieOper(key,value,time){
-		  return this.init(key,value,time) || this;
-	  }
-
-	  CookieOper.prototype.init = function(key,value,time){
-
-      //判断是否是集合 批量存储
-  		if(Object.prototype.toString.call(key) == '[object Object]'){
-
-        //判断是否设置过期时间
-  			if(Object.prototype.toString.call(value) == '[object Number]'){
-  				for(var i in key){
-  					this.set(i,key[i],value);
-  				}
-  			} else {
-  				for(var i in key){
-  					this.set(i,key[i]);
-  				}
-  			}
-
-      //判断是否为字符串  单个存储
-  		} else if(Object.prototype.toString.call(key) == '[object String]'){
-        //判断是否读写
-        if(value != true){
-          //判断是否设置过期时间
-    			if(Object.prototype.toString.call(time) == '[object Number]'){
-            this.set(key,value,time);
-          } else {
-            this.set(key,value);
-          }
-        } else {
-          return this.get(key);
-        }
-      //判断是否为数组 删除cookie
-  		} else if(Object.prototype.toString.call(key) == '[object Array]'){
-
-        if(value != true){
-          $.each(key,function(index,value){
-            this.clear(value);
-          });
-        } else {
-          var arr = [];
-          $.each(key,function(index,value){
-            arr.push(this.get(value));
-          });
-          return arr;
-        }
-  		}
-
-	  }
-
-    //设置cookie方法
-	  CookieOper.prototype.set = function(key,value,time){
-
-      var expires;
-      if(time){
-        var myDate = new Date();
-        myDate.setTime(myDate.getTime() + (time*24*60*60*1000));
-        expires = "expires=" + myDate.toUTCString();
-        document.cookie = key + "=" + value + "; " + expires;
-      } else {
-        document.cookie = key + "=" + value + "; ";
-      }
-
-	  }
-
-    //读取cookie方法
-	  CookieOper.prototype.get = function(key){
-      var cookied = document.cookie.split('; ');
-      return cookied[i].substring(cookied[i].indexOf('=')+1);
-	  }
-
-    //清除cookie方法
-	  CookieOper.prototype.clear = function(key){
-      this.set(key,'',-1);
-	  }
-
-	  $.fn.cookieOper = function(key,value,time){
-	  	return new CookieOper(key,value,time)
-	  }
-  })($);</script>
 </body>
 </html>
