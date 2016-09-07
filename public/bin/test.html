@@ -115,34 +115,32 @@ ul li {
     CookieOper.prototype.get = function(key){
       var cookied = document.cookie.split('; ');
       var cookiedArr= [];
-      for(var i=0,maxi=cookied.length;i<maxi;i++){
-        var temp = cookied[i].substring(0,cookied[i].indexOf('='));
-        var keyArrType = false;
-        if(Object.prototype.toString.call(key) == '[object Array]'){
-          keyArrType = true;
-        }
+      var keyArr = [];
 
-        if(keyArrType){
-          $.each(key,function(index,value){
-            var val = pushCookie(value,key)
-            if(typeof(val) != "undefined"){
-              cookiedArr.push(val);
-            }
-          }.bind(this));
-        } else {
-          var val = pushCookie(cookied[i],key)
+      if(Object.prototype.toString.call(key) == '[object Array]'){
+        keyArr = key;
+      } else {
+        keyArr.push(key);
+      }
+
+      for(var i=0,maxi=cookied.length;i<maxi;i++){
+        
+        var temp = cookied[i].substring(0,cookied[i].indexOf('='));
+        $.each(keyArr,function(index,value){
+          var val = pushCookie(value,key)
           if(typeof(val) != "undefined"){
             cookiedArr.push(val);
           }
-        }
-
-        function pushCookie(cookied,key){
-          if(temp == key){
-            return cookied.substring(cookied.indexOf('=')+1,cookied.length);
-          }
-        }
+        }.bind(this));
 
       }
+
+      function pushCookie(cookied,key){
+        if(temp == key){
+          return cookied.substring(cookied.indexOf('=')+1,cookied.length);
+        }
+      }
+
       return cookiedArr;
     }
 
