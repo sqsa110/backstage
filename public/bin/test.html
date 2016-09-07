@@ -78,20 +78,15 @@ ul li {
         } else {
           return this.get(key);
         }
-      //判断是否为数组 删除cookie
+      //判断是否为数组
       } else if(Object.prototype.toString.call(key) == '[object Array]'){
-
+        //判断是读还是clear
         if(value != true){
-          $.each(key,function(index,value){
-            this.clear(value);
-          }.bind(this));
+          this.clear(key);
         } else {
-          var arr = [];
-          $.each(key,function(index,value){
-            arr.push(this.get(value));
-          }.bind(this));
-          return arr;
+          return this.get(key);
         }
+
       }
 
     }
@@ -129,7 +124,7 @@ ul li {
         $.each(keyArr,function(index,value){
           if(temp == key){
             console.log(key);
-            cookiedArr.push(cookied[i].substring(cookied[i].indexOf('=')+1,cookied.length));
+            cookiedArr.push(cookied[i].substring(cookied[i].indexOf('=')+1,cookied[i].length));
           }
 /*
           var val = pushCookie(temp,value,key)
@@ -139,12 +134,6 @@ ul li {
 */
         }.bind(this));
 
-      }
-
-      function pushCookie(temp,cookied,key){
-        if(temp == key){
-          return cookied.substring(cookied.indexOf('=')+1,cookied.length);
-        }
       }
 
       return cookiedArr;
