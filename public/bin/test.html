@@ -76,7 +76,7 @@ ul li {
             this.set(key,value);
           }
         } else {
-          return this.get(key);
+          return this.get(key,false);
         }
       //判断是否为数组
       } else if(Object.prototype.toString.call(key) == '[object Array]'){
@@ -84,7 +84,7 @@ ul li {
         if(value != true){
           this.clear(key);
         } else {
-          return this.get(key);
+          return this.get(key,true);
         }
 
       }
@@ -107,10 +107,12 @@ ul li {
     }
 
     //读取cookie方法
-    CookieOper.prototype.get = function(key){
+    CookieOper.prototype.get = function(key,off){
       var cookied = document.cookie.split('; ');
       var cookiedArr= [];
       var keyArr = [];
+      var cookiedStr = null;
+
       console.log(key);
       if(Object.prototype.toString.call(key) == '[object Array]'){
         keyArr = key;
@@ -119,24 +121,28 @@ ul li {
       }
 
       for(var i=0,maxi=cookied.length;i<maxi;i++){
-
         var temp = cookied[i].substring(0,cookied[i].indexOf('='));
         $.each(keyArr,function(index,value){
           if(temp == key){
+            
             console.log(key);
-            cookiedArr.push(cookied[i].substring(cookied[i].indexOf('=')+1,cookied[i].length));
+            if(off){
+              cookiedArr.push(cookied[i].substring(cookied[i].indexOf('=')+1,cookied[i].length));
+              return false;
+            } else {
+              cookiedStr = cookied[i].substring(cookied[i].indexOf('=')+1,cookied[i].length);
+              return false;
+            }
+            
           }
-/*
-          var val = pushCookie(temp,value,key)
-          if(typeof(val) != "undefined"){
-            cookiedArr.push(val);
-          }
-*/
         }.bind(this));
 
+        if(cookiedStr){
+          break;
+        }
       }
 
-      return cookiedArr;
+      return cookiedStr || cookiedArr;
     }
 
     //清除cookie方法
