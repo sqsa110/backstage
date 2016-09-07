@@ -11,7 +11,7 @@
 <script src="http://cdn.bootcss.com/immutable/3.8.1/immutable.min.js"></script>
 <script src="./browser.min.js"></script>
 <script src="./marked.min.js"></script>
-
+<script src="./cookie.js"></script>
 <style type="text/css">
 ul {
   padding:0;
@@ -42,134 +42,8 @@ ul li {
 }
 
 </style>
-<script>
-  (function($){
-
-    function CookieOper(){
-
-    }
-
-    CookieOper.prototype.init = function(key,value,time){
-
-      //判断是否是集合 批量存储
-      if(Object.prototype.toString.call(key) == '[object Object]'){
-
-        //判断是否设置过期时间
-        if(Object.prototype.toString.call(value) == '[object Number]'){
-          for(var i in key){
-            this.set(i,key[i],value);
-          }
-        } else {
-          for(var i in key){
-            this.set(i,key[i]);
-          }
-        }
-
-      //判断是否为字符串  单个存储
-      } else if(Object.prototype.toString.call(key) == '[object String]'){
-        //判断是否读写
-        if(value != true){
-          //判断是否设置过期时间
-          if(Object.prototype.toString.call(time) == '[object Number]'){
-            this.set(key,value,time);
-          } else {
-            this.set(key,value);
-          }
-        } else {
-          return this.get(key,false);
-        }
-      //判断是否为数组
-      } else if(Object.prototype.toString.call(key) == '[object Array]'){
-        //判断是读还是clear
-        if(value != true){
-          this.clear(key);
-        } else {
-          return this.get(key,true);
-        }
-
-      }
-
-    }
-
-    //设置cookie方法
-    CookieOper.prototype.set = function(key,value,time){
-
-      var expires;
-      if(time){
-        var myDate = new Date();
-        myDate.setTime(myDate.getTime() + (time*24*60*60*1000));
-        expires = "expires=" + myDate.toUTCString();
-        document.cookie = key + "=" + value + "; " + expires;
-      } else {
-        document.cookie = key + "=" + value + "; ";
-      }
-
-    }
-
-    //读取cookie方法
-    CookieOper.prototype.get = function(key,off){
-      var cookied = document.cookie.split('; ');
-      var cookiedArr= [];
-      var keyArr = [];
-      var cookiedStr = null;
-
-      if(Object.prototype.toString.call(key) == '[object Array]'){
-        keyArr = key;
-      } else {
-        keyArr.push(key);
-      }
-
-      for(var i=0,maxi=cookied.length;i<maxi;i++){
-        var temp = cookied[i].substring(0,cookied[i].indexOf('='));
-        $.each(keyArr,function(index,value){
-          if(temp == value){
-            if(off){
-              cookiedArr.push(cookied[i].substring(cookied[i].indexOf('=')+1,cookied[i].length));
-              return false;
-            } else {
-              cookiedStr = cookied[i].substring(cookied[i].indexOf('=')+1,cookied[i].length);
-              return false;
-            }
-            
-          }
-        }.bind(this));
-
-        if(cookiedStr){
-          break;
-        }
-      }
-      return cookiedStr || cookiedArr;
-    }
-
-    //清除cookie方法
-    CookieOper.prototype.clear = function(key){
-      this.set(key,'',-1);
-    }
-
-    $.extend({
-      cookieOper : function(key,value,time){
-        var ck = new CookieOper();
-        return ck.init(key,value,time);
-      }
-    });
-  })($);
-</script>
-<script>
-  $.cookieOper('aa','bb');
-  console.log($.cookieOper(['aa','bb'],true));
-  console.log($.cookieOper('aa',true));
-  $.cookieOper({bb:'cc',dd:'ee',ff:'gg'});
-  $.cookieOper(['bb','dd']);
-</script>
 </head>
 <body>
-<!-- Button trigger modal 
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-  Launch demo modal
-</button>
--->
-
-<!-- Modal -->
 
 <div class="modal fade login " id="myModal" tabIndex="-1">
   <div class="modal-dialog" role="document">
@@ -483,10 +357,11 @@ ul li {
           this.setState({off:false});
           switch(data.code){
           	case 1000:
+              
           		break;
           	case 1001:
-				var states = This.loginErrorFn(this.state);
-				this.setState({passworddata:states})
+				      var states = This.loginErrorFn(this.state);
+				      this.setState({passworddata:states});
           		break;
           	default:
           		console.log('default');
