@@ -124,11 +124,12 @@ ul li {
       }
 
       for(var i=0,maxi=cookied.length;i<maxi;i++){
-        
+
         var temp = cookied[i].substring(0,cookied[i].indexOf('='));
         $.each(keyArr,function(index,value){
           var val = pushCookie(value,key)
           if(typeof(val) != "undefined"){
+            console.log(val);
             cookiedArr.push(val);
           }
         }.bind(this));
