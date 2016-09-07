@@ -45,10 +45,8 @@ ul li {
 <script>
   (function($){
 
-    function CookieOper(key,value,time){
-      var aaa = this.init(key,value,time);
-      console.log(aaa);
-      return aaa;
+    function CookieOper(){
+
     }
 
     CookieOper.prototype.init = function(key,value,time){
@@ -78,9 +76,7 @@ ul li {
             this.set(key,value);
           }
         } else {
-          var aaa = this.get(key,false);
-          console.log(aaa);
-          return aaa;
+          return this.get(key,false);
         }
       //判断是否为数组
       } else if(Object.prototype.toString.call(key) == '[object Array]'){
@@ -142,8 +138,6 @@ ul li {
           break;
         }
       }
-      console.log(cookiedArr);
-      console.log(cookiedStr);
       return cookiedStr || cookiedArr;
     }
 
@@ -154,7 +148,8 @@ ul li {
 
     $.extend({
       cookieOper : function(key,value,time){
-        return new CookieOper(key,value,time);
+        var ck = new CookieOper();
+        return ck.init(key,value,time);
       }
     });
   })($);
