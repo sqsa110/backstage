@@ -1,6 +1,6 @@
 var mysql = require('mysql');
 var myconf = require('../conf');
-var encode = require('../lib/encode');
+var encode = require('./encode');
 
 function Authen(){
 	
@@ -41,4 +41,5 @@ function authen(req){
 	var tion = new Authen();
 	tion.init(req);
 }
+
 module.exports = authen;

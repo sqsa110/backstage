@@ -19,12 +19,11 @@ router.get('/', function(req, res, next) {
 		console.log('1 + 1');
 
 	} else if(req.cookies && req.cookies.name && req.cookies.pass){
-		authen(req);
+//		authen(req);
 		console.log('1 + 2');
-	} /*else {
+	} else {
 		console.log('1 + 3');
 	}
-*/
 //	console.log(session);
 	res.render('index', { title: 'Express' });
 	logger.info("lll");
