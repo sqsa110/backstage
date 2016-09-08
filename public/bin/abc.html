@@ -150,7 +150,9 @@
       this.lowercase = conf.lowercase;
       this.custom = conf.custom;
       this.randomFn();
-
+      for(var i=0;i<100;i++){
+        this.encode();
+      }
     }
 
     StrEncode.prototype.init = function(){
@@ -175,13 +177,15 @@
     }
 
     StrEncode.prototype.encode = function(str){
-      
+      var randomNum = round(random() * this.randomArr.length);
+      console.log(randomNum)
+      return randomNum;
     }
 
     $.extend({
       strEncode : function(key,conf){
         var strEncode = new StrEncode(conf);
-        return strEncode.init(key);;
+        return strEncode.init(key);
       }
     });
   })($);
