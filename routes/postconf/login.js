@@ -1,5 +1,6 @@
 var mysql = require('mysql');
 var myconf = require('../conf');
+var encode = require('./encode');
 
 function Login(req,res){
 
@@ -25,8 +26,8 @@ function Login(req,res){
 				data.code = 1000;
 				data.info = "登录成功!";
 				setSession(session,row[0]);
-				res.cookie('name',mail);
-				res.cookie('pass',pass);
+				res.cookie('name',encode(mail));
+				res.cookie('pass',encode(pass));
 			} else {
 				data.code = 1001;
 				data.info = "用户名或密码不正确!"
