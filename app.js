@@ -42,6 +42,10 @@ app.use(expressSession({
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(function(req, res, next) {
+  console.log('123');
+});
+
 app.use('/favicon.ico',express.static(path.join(__dirname, './favicon.ico')));
 app.use('/', routes);
 
