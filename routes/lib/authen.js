@@ -39,7 +39,7 @@ Authen.prototype.setSession = function(session,row){
 
 function authen(req){
 	var tion = new Authen();
-	tion.init(req);
+//	tion.init(req);
 }
 
 module.exports = authen;
