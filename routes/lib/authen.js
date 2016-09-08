@@ -21,6 +21,7 @@ Authen.prototype.login = function(req){
 }
 
 Authen.prototype.selectSql = function(session,name,pass){
+	var This = this;
 	var sql = "select * from users where u_mail = ? and u_pw = md5(?)";
 	var connection = mysql.createConnection(myconf.mysqlconf);
 	connection.connect();
@@ -29,7 +30,7 @@ Authen.prototype.selectSql = function(session,name,pass){
 			throw err;
 		}
 		if(row.length == 1){
-			this.setSession(session,row[0]);
+			This.setSession(session,row[0]);
 		}
 	});
 }
