@@ -1,6 +1,6 @@
 var mysql = require('mysql');
 var myconf = require('../conf');
-var encode = require('../lib/strEncode');
+var encode = require('../lib/encode');
 
 function Authen(){
 	
