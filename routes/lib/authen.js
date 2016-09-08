@@ -11,9 +11,11 @@ Authen.prototype.init = function(req){
 }
 
 Authen.prototype.login = function(req){
-	var name = encode(req.cookies.name,true);
-	var pass = encode(req.cookies.pass,true);
-	this.selectSql(name,pass);
+//	var name = encode(req.cookies.name,true);
+//	var pass = encode(req.cookies.pass,true);
+	var name = req.cookies.name;
+	var pass = req.cookies.pass;
+//	this.selectSql(name,pass);
 	
 }
 
@@ -39,7 +41,7 @@ Authen.prototype.setSession = function(session,row){
 
 function authen(req){
 	var tion = new Authen();
-//	tion.init(req);
+	tion.init(req);
 }
 
 module.exports = authen;
