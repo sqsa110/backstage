@@ -141,27 +141,31 @@
         num : [0,9],
         capital : [97,122],
         lowercase : [65,90],
-        custom : [0,0]
+        custom : [0,0],
+        encode:[3,3],
+        key : 75,
+        multiplication : 3
       },conf);
 
       this.randomArr = [];
-      this.num = conf.num;
-      this.capital = conf.capital;
-      this.lowercase = conf.lowercase;
-      this.custom = conf.custom;
-      this.randomFn();
-      console.log(this.randomArr.length);
-      for(var i=0;i<100;i++){
-        this.encode();
+      for(var i in conf){
+        this[i] = conf[i];
       }
+//      this.num = conf.num;
+//      this.capital = conf.capital;
+//      this.lowercase = conf.lowercase;
+//      this.custom = conf.custom;
+//      this
+      this.randomArrFn();
+
     }
 
-    StrEncode.prototype.init = function(){
-      
+    StrEncode.prototype.init = function(str){
+      return this.encode(str);
     }
 
     //加密符号生成
-    StrEncode.prototype.randomFn = function(){
+    StrEncode.prototype.randomArrFn = function(){
       for(var i=this.num[0];i<=this.num[1];i++){
         this.randomArr.push(i);
       }
@@ -177,16 +181,28 @@
       return this;
     }
 
-    StrEncode.prototype.encode = function(str){
+    StrEncode.prototype.randomFn = function(){
       var randomNum = Math.floor(Math.random() * this.randomArr.length);
-      console.log(randomNum)
-      return randomNum;
+      return randomNum;      
+    }
+
+    StrEncode.prototype.encode = function(str){
+      var newStr = '';
+      for(var i=0,maxi=str.length;i<maxi;i++){
+        if(i == this.encode[0] || i == maxi - this.encode[1]){
+          for(var j=0;j<3;j++){
+            newStr +=  this.randomArr[this.randomFn()].charCodeAt(i) * this.multiplication + key + '|';
+          }
+        }
+        newStr += str.charCodeAt(i) * this.multiplication + key + '|';
+      }
+      retrun newStr;
     }
 
     $.extend({
-      strEncode : function(key,conf){
+      strEncode : function(str,conf){
         var strEncode = new StrEncode(conf);
-        return strEncode.init(key);
+        return strEncode.init(str);
       }
     });
   })($);
@@ -216,6 +232,8 @@
 
   var aaa = $.strEncode(username);
   console.log(aaa);
+  var bbb = $.strEncode(123456789);
+  console.log(bbb);
 
 </script>
 </head>
