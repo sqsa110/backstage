@@ -161,7 +161,7 @@
     }
 
     StrEncode.prototype.init = function(str){
-      return this.encode(str);
+      return this.encodeFn(str);
     }
 
     //加密符号生成
@@ -186,7 +186,7 @@
       return randomNum;      
     }
 
-    StrEncode.prototype.encode = function(str){
+    StrEncode.prototype.encodeFn = function(str){
       var newStr = '';
       for(var i=0,maxi=str.length;i<maxi;i++){
         if(i == this.encode[0] || i == maxi - this.encode[1]){
