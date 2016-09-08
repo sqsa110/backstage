@@ -7,7 +7,7 @@ var authen = require('./lib/authen');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-
+	console.log(req.cookies);
 	var session = req.session;
 	if(session && session.signning){
 
@@ -23,7 +23,7 @@ router.get('/', function(req, res, next) {
 		console.log('1 + 3');
 	}
 
-	console.log(session);
+//	console.log(session);
 	res.render('index', { title: 'Express' });
 	logger.info("lll");
 //	next();
