@@ -341,11 +341,13 @@ ul li {
   function LoginServer(conf){
     this._this = conf.this;
   }
+
   LoginServer.prototype.init = function(username,password){
     var data = this.loginData(username,password);
     this.login(data);
   }
-  LoginServer.prototype.login = function(datas){
+  
+  LoginServer.prototype.login = function(datas,callback){
     var This = this;
     setTimeout(function(){
       $.ajax({
@@ -358,7 +360,8 @@ ul li {
           this.setState({off:false});
           switch(data.code){
           	case 1000:
-              
+              This.loginCookieFn(datas);
+              callback && callback();              
           		break;
           	case 1001:
 				      var states = This.loginErrorFn(this.state);
@@ -375,6 +378,7 @@ ul li {
       });
     }.bind(this._this),300);
   }
+
   LoginServer.prototype.loginData = function(username,password){
     var data = {};
     var usernames = '';
@@ -389,6 +393,7 @@ ul li {
     data.pass = passwords;
     return data;
   }
+
   LoginServer.prototype.selectUsername = function(username,callback){
     var This = this;
     setTimeout(function(){
@@ -399,7 +404,6 @@ ul li {
         cache:false,
         data:{username:username},
         success:function(data){
-          callback();
           console.log(data);
         }.bind(this),
         error:function(xhr,status,err){
@@ -408,6 +412,7 @@ ul li {
       });
     }.bind(this._this),300)
   }
+
   LoginServer.prototype.loginErrorFn = function(state){
 		
       var list = state.passworddata;
@@ -425,6 +430,12 @@ ul li {
       return list;
   }
 
+  LoginServer.prototype.loginCookieFn = function(datas){
+    $.cookieOper({
+      name : $.strEncode(datas.name),
+      pass : $.strEncode(datas.pass)
+    });
+  }
 
 
 

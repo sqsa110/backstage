@@ -2,17 +2,27 @@ var express = require('express');
 var router = express.Router();
 var logger = require('../public/bin/log').logger('index');
 var getConf = require('./getconf');
-var postConf = require('./postconf');
-
+var postConf = require('./postconf'); 
+var authen = require('./lib/authen');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+
 	var session = req.session;
-	if(session.signning){
+	if(session && session.signning){
+
 		session.signning = true;
 		session.uId = session.uId;
 		session.uMail = session.uMail;
+		console.log('1 + 1');
+		
+	} else if(req.cookies && req.cookies.name && req.cookies.pass){
+		authen(req);
+		console.log('1 + 2');
+	} else {
+		console.log('1 + 3');
 	}
+
 	console.log(session);
 //	res.render('index', { title: 'Express' });
 	logger.info("lll");
