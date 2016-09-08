@@ -18,10 +18,10 @@ router.get('/', function(req, res, next) {
 		session.uMail = session.uMail;
 		console.log('1 + 1');
 
-	}/* else if(req.cookies && req.cookies.name && req.cookies.pass){
+	} else if(req.cookies && req.cookies.name && req.cookies.pass){
 		authen(req);
 		console.log('1 + 2');
-	} else {
+	} /*else {
 		console.log('1 + 3');
 	}
 */
