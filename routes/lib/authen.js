@@ -15,7 +15,7 @@ Authen.prototype.login = function(req){
 //	var pass = encode(req.cookies.pass,true);
 	var name = req.cookies.name;
 	var pass = req.cookies.pass;
-//	this.selectSql(name,pass);
+	this.selectSql(name,pass);
 	
 }
 
