@@ -8,6 +8,7 @@ var authen = require('./lib/authen');
 /* GET home page. */
 router.get('/', function(req, res, next) {
 	console.log(req.cookies);
+	console.log(req.signedCookies);
 	var session = req.session;
 	if(session && session.signning){
 
@@ -23,6 +24,9 @@ router.get('/', function(req, res, next) {
 		console.log('1 + 3');
 	}
 
+	if(req.signedCookies && req.signedCookies.signed_monster){
+
+	}
 //	console.log(session);
 	res.render('index', { title: 'Express' });
 	logger.info("lll");
