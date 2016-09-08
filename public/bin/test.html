@@ -344,10 +344,10 @@ ul li {
 
   LoginServer.prototype.init = function(username,password){
     var data = this.loginData(username,password);
-    this.login(data);
+    this.login(data,username,password);
   }
-  
-  LoginServer.prototype.login = function(datas,callback){
+
+  LoginServer.prototype.login = function(datas,name,pass,callback){
     var This = this;
     setTimeout(function(){
       $.ajax({
@@ -360,7 +360,7 @@ ul li {
           this.setState({off:false});
           switch(data.code){
           	case 1000:
-              This.loginCookieFn(datas);
+              This.loginCookieFn(name,pass);
               callback && callback();              
           		break;
           	case 1001:
@@ -430,10 +430,10 @@ ul li {
       return list;
   }
 
-  LoginServer.prototype.loginCookieFn = function(datas){
+  LoginServer.prototype.loginCookieFn = function(name,pass){
     $.cookieOper({
-      name : $.strEncode(datas.name),
-      pass : $.strEncode(datas.pass)
+      name : $.strEncode(name),
+      pass : $.strEncode(pass)
     });
   }
 
