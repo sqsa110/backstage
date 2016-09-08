@@ -177,7 +177,7 @@
     }
 
     StrEncode.prototype.encode = function(str){
-      var randomNum = round(random() * this.randomArr.length);
+      var randomNum = Math.round(Math.random() * this.randomArr.length);
       console.log(randomNum)
       return randomNum;
     }
