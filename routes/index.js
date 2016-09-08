@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
 		session.uId = session.uId;
 		session.uMail = session.uMail;
 		console.log('1 + 1');
-		
+
 	} else if(req.cookies && req.cookies.name && req.cookies.pass){
 		authen(req);
 		console.log('1 + 2');
@@ -24,9 +24,9 @@ router.get('/', function(req, res, next) {
 	}
 
 	console.log(session);
-//	res.render('index', { title: 'Express' });
+	res.render('index', { title: 'Express' });
 	logger.info("lll");
-	next();
+//	next();
 });
 
 
