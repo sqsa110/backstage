@@ -1,6 +1,6 @@
 var mysql = require('mysql');
 var myconf = require('../conf');
-var encode = require('./encode');
+var encode = require('../lib/encode');
 
 function Login(req,res){
 
