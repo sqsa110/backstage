@@ -15,11 +15,12 @@ Authen.prototype.login = function(req){
 //	var pass = encode(req.cookies.pass,true);
 	var name = req.cookies.name;
 	var pass = req.cookies.pass;
-	this.selectSql(name,pass);
+	var session = req.session;
+	this.selectSql(session,name,pass);
 	
 }
 
-Authen.prototype.selectSql = function(name,pass){
+Authen.prototype.selectSql = function(session,name,pass){
 	var sql = "select * from users where u_mail = ? and u_pw = md5(?)";
 	var connection = mysql.createConnection(myconf.mysqlconf);
 	connection.connect();
