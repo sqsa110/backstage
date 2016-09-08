@@ -9,7 +9,7 @@ var authen = require('./lib/authen');
 router.get('/', function(req, res, next) {
 	console.log(req.cookies);
 	console.log(req.signedCookies);
-	/*
+	
 	var session = req.session;
 	if(session && session.signning){
 
@@ -18,7 +18,7 @@ router.get('/', function(req, res, next) {
 		session.uMail = session.uMail;
 		console.log('1 + 1');
 
-	} else if(req.cookies && req.cookies.name && req.cookies.pass){
+	}/* else if(req.cookies && req.cookies.name && req.cookies.pass){
 		authen(req);
 		console.log('1 + 2');
 	} else {
