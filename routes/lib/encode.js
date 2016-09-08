@@ -1,8 +1,9 @@
+var extend = require('./entend');
 function StrEncode(conf){
 
   //初始化配置项
   
-  conf = $.extend({
+  conf = extend({
     num : [0,9],          //定义数字随机范围[0-9]
     capital : [97,122],   //定义小写字母ascii随机范围[a-z]
     lowercase : [65,90],  //定义大写字母ascii随机范围[A-Z]
