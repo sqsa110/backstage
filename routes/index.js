@@ -16,6 +16,7 @@ router.get('/', function(req, res, next) {
 	console.log(session);
 //	res.render('index', { title: 'Express' });
 	logger.info("lll");
+	next();
 });
 
 
