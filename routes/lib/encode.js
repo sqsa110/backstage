@@ -1,4 +1,4 @@
-var extend = require('./entend');
+var extend = require('./extend');
 function StrEncode(conf){
 
   //初始化配置项
