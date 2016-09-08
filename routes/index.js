@@ -24,10 +24,10 @@ router.get('/', function(req, res, next) {
 	} else {
 		console.log('1 + 3');
 	}
-
+*/
 //	console.log(session);
 	res.render('index', { title: 'Express' });
-	logger.info("lll");*/
+	logger.info("lll");
 //	next();
 });
 
