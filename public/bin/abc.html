@@ -191,10 +191,7 @@
       for(var i=0,maxi=str.length;i<maxi;i++){
         if(i == this.encode[0] || i == maxi - this.encode[1]){
           for(var j=0;j<3;j++){
-            console.log(this.randomArr);
-            var aaa = this.randomArr[this.randomFn()];
-            console.log(aaa);
-            newStr +=  this.randomArr[this.randomFn()].charCodeAt() * this.multiplication + this.key + '|';
+            newStr +=  this.randomArr[this.randomFn()] + '|';
           }
         }
         newStr += str.charCodeAt(i) * this.multiplication + this.key + '|';
