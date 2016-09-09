@@ -19,7 +19,6 @@ router.get('/', function(req, res, next) {
 		console.log('1 + 1');
 
 	} else if(req.cookies && req.cookies.name && req.cookies.pass){
-		console.log(authen);
 		authen(req);
 		console.log('1 + 2');
 	} else {
