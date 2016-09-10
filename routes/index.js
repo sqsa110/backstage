@@ -7,29 +7,33 @@ var authen = require('./lib/authen');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-	console.log(req.cookies);
-	console.log(req.signedCookies);
-	
+
+	console.log(req.cookies);	
 	var session = req.session;
 	if(session && session.signning){
-
 		session.signning = true;
 		session.uId = session.uId;
 		session.uMail = session.uMail;
 		console.log('1 + 1');
-
 	} else if(req.cookies && req.cookies.name && req.cookies.pass){
 		authen(req);
 		console.log('1 + 2');
 	} else {
 		console.log('1 + 3');
 	}
-//	console.log(session);
+
 	res.render('index', { title: 'Express' });
 	logger.info("lll");
 //	next();
 });
 
+router.get('/session',function(req,res){
+	var session = req.session;
+	session.count = session.count || 0;
+	var n = session.count++;
+	res.send(session.id + ',n:' +n);
+	req.session.save();
+});
 
 router.get('/backstaged', function(req, res, next) {
 	res.render('backstaged/index', { title: 'Express' });
