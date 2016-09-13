@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom';
 
 
 ReactDOM.render(
-	<div>abc</div>,
+	<h1></h1>,
 	document.getElementById('login')
 );
-

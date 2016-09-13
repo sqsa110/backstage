@@ -24,26 +24,30 @@ module.exports = {
             {
                 test : /\.css$/,
                 loaders : ['style','css'],
+                exclude:"/node_modules/",
                 include : 'public/css'
             },
             {
                 test:/\.less$/,
                 loaders : ['style','css','less'],
+                exclude:"/node_modules/",
                 include : 'public/css'
             },
             {
                 test: /\.(eot|woff|svg|ttf|woff2)$/,
+                exclude:"/node_modules/",
                 loader : "file-loader"
             },
             { 
-                test : /\.js$/,
-                loaders : ['react-hot','babel?presets[]=es2015&presets[]=react'],
+                test : /\.jsx?$/,
+                loaders : ['react-hot','babel?presets[]=react&presets[]=es2015'],
+                exclude:"/node_modules/",
                 include : 'public/javascripts'
             }
         ]
     },
     resolve : {
-        extensions:['',".js",".json",'.jsx','.css']
+        extensions:['','.js','.json','.jsx','.css']
     },
     devServer : {
         historyApiFallback : true,
