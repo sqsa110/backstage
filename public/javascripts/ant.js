@@ -1,9 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-
+var Box = React.createClass({
+    render:function(){
+      return (
+        <div className="modal-header">
+          <div className="container-fluid">
+            <div className="row title">
+              <div className="col-xs-6"><a href="javascript:;">登陆</a></div>
+              <div className="col-xs-6"><a href="javascript:;">快速注册</a></div>
+            </div>
+            <div className="row dash">
+              <div className="col-xs-2"></div>
+              <div className="col-xs-2 line"></div>
+              <div className="col-xs-2"></div>
+              <div className="col-xs-2"></div>
+              <div className="col-xs-2 line"></div>
+              <div className="col-xs-2"></div>
+            </div>
+          </div>
+        </div>
+      )
+    }
+});
 
 ReactDOM.render(
-	<h1></h1>,
+	<Box />,
 	document.getElementById('login')
 );
