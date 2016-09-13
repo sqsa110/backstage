@@ -36,7 +36,7 @@ module.exports = {
                 loader : "file-loader"
             },
             { 
-                test : /\.jsx?$/,
+                test : /\.js$/,
                 loaders : ['react-hot','babel?presets[]=es2015&presets[]=react'],
                 include : 'public/javascripts'
             }
