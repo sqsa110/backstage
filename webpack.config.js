@@ -5,8 +5,8 @@ var path = require('path');
 
 module.exports = {
     entry : {
-        backstagemain : './public/javascripts/backstagemain.js',
-        reactmain : './public/javascripts/reactmain.js',
+//       backstagemain : './public/javascripts/backstagemain.js',
+//        reactmain : './public/javascripts/reactmain.js',
         ant : './public/javascripts/ant.js'
     },
     output : {
