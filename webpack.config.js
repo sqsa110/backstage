@@ -24,12 +24,12 @@ module.exports = {
             {
                 test : /\.css$/,
                 loaders : ['style','css'],
-                include : ['public/css']
+                include : 'public/css'
             },
             {
                 test:/\.less$/,
                 loaders : ['style','css','less'],
-                include : ['public/css']
+                include : 'public/css'
             },
             {
                 test: /\.(eot|woff|svg|ttf|woff2)$/,
@@ -38,8 +38,8 @@ module.exports = {
             { 
                 test : /\.jsx?$/,
                 loaders : ['react-hot','babel?presets[]=es2015&presets[]=react'],
-                include : ['public/javascripts']
-            },
+                include : 'public/javascripts'
+            }
         ]
     },
     resolve : {
