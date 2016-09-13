@@ -1,22 +1,18 @@
 var webpack = require('webpack');
 var path = require('path');
-//var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('common.js');
+//var htmlWebpackPlugin = require('html-webpack-plugin');
+
 
 module.exports = {
     entry : {
-//        entry1 : './entry/entry1.js',
         backstagemain : './public/javascripts/backstagemain.js',
-        reactmain : './public/javascripts/reactmain.js'
-/*        common : [
-            './node_modules/react/dist/react.min.js',
-            './node_modules/react-dom/dist/react-dom.min.js'
-        ]*/
+        reactmain : './public/javascripts/reactmain.js',
+        ant : './public/javascripts/ant.js'
     },
     output : {
         path : path.resolve(__dirname,'./public/assents'),
         filename : '[name].js'
     },
-//    plugins : [new webpack.optimize.CommonsChunkPlugin('common','common.js')],
     plugins : [
         new webpack.DllReferencePlugin({
             context : __dirname,
@@ -25,25 +21,34 @@ module.exports = {
     ],
     module:{
         loaders : [
-            { 
-                test : /\.js$/,
-                loader : 'babel-loader',
-                exclude:/node_modules/,
-                query : {
-                    presets : ['es2015','react']
-                }
+            {
+                test : /\.css$/,
+                loaders : ['style','css'],
+                include : ['public/css']
             },
             {
-                test : /\.jsx$/,
-                loader : 'babel-loader!jsx-loader?harmony',
-                exclude : /node_modules/,
-                query : {
-                    presets : ['es2015','react']
-                } 
-           }   
+                test:/\.less$/,
+                loaders : ['style','css','less'],
+                include : ['public/css']
+            },
+            {
+                test: /\.(eot|woff|svg|ttf|woff2)$/,
+                loader : "file-loader"
+            },
+            { 
+                test : /\.jsx?$/,
+                loaders : ['react-hot','babel?presets[]=es2015&presets[]=react'],
+                include : ['public/javascripts']
+            },
         ]
     },
     resolve : {
-        extensions:["",".js",".json"]
+        extensions:['',".js",".json",'.jsx','.css']
+    },
+    devServer : {
+        historyApiFallback : true,
+        hot : true,
+        inline : true,
+        progress : true
     }
 }
