@@ -40,9 +40,14 @@ module.exports = {
             },
             { 
                 test : /\.jsx?$/,
-                loaders : ['react-hot','babel?presets[]=react&presets[]=es2015'],
+                loaders : ['react-hot','babel'],
                 exclude:"/node_modules/",
                 include : 'public/javascripts'
+            },
+            {
+                test : /\.js$/,
+                exclude:"/node_modules/",
+                loader : 'babel-loader'
             }
         ]
     },
