@@ -40,14 +40,9 @@ module.exports = {
             },
             { 
                 test : /\.jsx?$/,
-                loaders : ['react-hot','babel'],
+                loaders:['react-hot','babel-loader!jsx-loader?harmony?presets[]=es2015&presets[]=react'],
                 exclude:"/node_modules/",
                 include : 'public/javascripts'
-            },
-            {
-                test : /\.js$/,
-                exclude:"/node_modules/",
-                loader : 'babel-loader'
             }
         ]
     },
