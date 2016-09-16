@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 class Box extends React.Component({
-    render:function(){
+    render(){
       return (
         <div className="modal-header">
           <div className="container-fluid">
