@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-var Box = React.createClass({
+class Box extends React.Component({
     render:function(){
       return (
         <div className="modal-header">
