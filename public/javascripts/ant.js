@@ -9,7 +9,6 @@ class Main extends React.Component{
     )
   }
 }
-/*
+
 ReactDOM.render(<Main />,document.getElementById('login'))
 
-*/

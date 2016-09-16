@@ -40,19 +40,19 @@ module.exports = {
             },
             { 
                 test : /\.jsx?$/,
-                loaders : ['react-hot','babel?presets[]=es2015&presets[]=react'],
+                loaders : ['babel?presets[]=es2015&presets[]=react'],
                 exclude:"/node_modules/",
-                include : 'public/javascripts'
+                include : path.resolve(__dirname,'public/javascripts')
             }
         ]
     },
     resolve : {
         extensions:['','.js','.json','.jsx','.css']
-    }/*,
+    },
     devServer : {
         historyApiFallback : true,
         hot : true,
         inline : true,
         progress : true
-    }*/
+    }
 }
