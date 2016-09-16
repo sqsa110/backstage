@@ -4,14 +4,10 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "react": "./node_modules/.bin/webpack-dev-server --progress --profile --colors --hot"
+    "react": "./node_modules/.bin/web-dev-server --progress --profile --colors --hot"
   },
   "dependencies": {
-    "babel": "^6.5.2",
-    "babel-loader": "^6.2.5",
-    "babel-preset-es2015": "^6.14.0",
-    "babel-preset-react": "^6.11.1",
-    "babel-preset-stage-1": "~6.13.0",
+    "antd": "~1.11.0",
     "body-parser": "~1.15.1",
     "cookie-parser": "~1.4.3",
     "css-loader": "^0.24.0",
@@ -21,12 +17,10 @@
     "jade": "~1.11.0",
     "less-loader": "^2.2.3",
     "morgan": "~1.7.0",
-    "react": "^15.3.1",
-    "react-dom": "^15.3.1",
-    "react-hot-loader": "^3.0.0-beta.4",
+    "react-hot-loader": "^3.0.0-beta.3",
     "serve-favicon": "~2.3.0",
     "style-loader": "^0.13.1",
-    "webpack-dev-server": "^1.15.2"
+    "webpack-dev-server": "^1.15.1"
   },
   "description": "后台",
   "main": "app.js",

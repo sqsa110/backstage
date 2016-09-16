@@ -12,13 +12,13 @@ module.exports = {
     output : {
         path : path.resolve(__dirname,'./public/assents'),
         filename : '[name].js'
-    },
+    },/*
     plugins : [
         new webpack.DllReferencePlugin({
             context : __dirname,
             manifest : require('./mainfest.json')
         })
-    ],
+    ],*/
     module:{
         loaders : [
             {
@@ -48,11 +48,11 @@ module.exports = {
     },
     resolve : {
         extensions:['','.js','.json','.jsx','.css']
-    },
+    }/*,
     devServer : {
         historyApiFallback : true,
         hot : true,
         inline : true,
         progress : true
-    }
+    }*/
 }
