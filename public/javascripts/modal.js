@@ -47,5 +47,5 @@ const LoginModal = React.createClass({
   },
 });
 
-export default = LoginModal;
+module.exports = LoginModal;
 

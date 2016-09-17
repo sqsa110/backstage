@@ -161,4 +161,4 @@ let Register = React.createClass({
 
 Register = createForm()(Register);
 
-export default = Register;
+module.exports = Register;
