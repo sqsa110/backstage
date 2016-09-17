@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { Button, Form, Input } from 'antd';
 
 const createForm = Form.create;

@@ -1,3 +1,4 @@
+import React from 'react';
 import ReactDOM from 'react-dom';
 import LoginModal from './modal.js';
 import 'antd/dist/antd.css';
