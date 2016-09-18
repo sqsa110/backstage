@@ -19,9 +19,8 @@ const LoginModal = React.createClass({
     this.setState({ loading: true });
     console.log(this.refs);
     console.log(this.refs.register);
-    console.log(this.refs.register.props);
-    console.log(this.refs.register.props.handleSubmit);
-    console.log(this.refs.register.props.handleSubmit());
+    console.log(this.refs.register.handleSubmit);
+    console.log(this.refs.register.handleSubmit());
     this.refs.register.handleSubmit();
     this.setState({ loading: false, visible: false });
     
@@ -41,7 +40,7 @@ const LoginModal = React.createClass({
           title="注册" onOk={this.handleOk} onCancel={this.handleCancel}
           footer={[
             <Button key="back" type="ghost" size="large" onClick={this.handleCancel}>返 回</Button>,
-            <Button key="submit" type="primary" size="large" loading={this.state.loading} onClick={this.handleOk}>
+            <Button key="submit" type="primary" size="large" loading={this.state.loading} onClick={this.handleOk.bind(this)}>
               提 交
             </Button>,
           ]}
