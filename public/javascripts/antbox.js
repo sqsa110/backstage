@@ -34,7 +34,9 @@ let AntdBox = React.createClass({
             </Menu>
           </aside>
           <div className="ant-layout-main">
-            <div className="ant-layout-header"></div>
+            <div className="ant-layout-header">
+              <LoginModal />
+            </div>
             <div className="ant-layout-breadcrumb">
               <Breadcrumb>
                 <Breadcrumb.Item>首页</Breadcrumb.Item>
