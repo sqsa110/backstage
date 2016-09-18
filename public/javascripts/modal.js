@@ -17,6 +17,8 @@ const LoginModal = React.createClass({
   handleOk() {
 
     this.setState({ loading: true });
+    console.log(this.refs.register);
+    console.log(this.refs.register.handleSubmit());
     this.refs.register.handleSubmit();
     this.setState({ loading: false, visible: false });
     
