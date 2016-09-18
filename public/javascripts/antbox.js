@@ -1,13 +1,13 @@
 import React from 'react';
 import { Menu, Breadcrumb, Icon } from 'antd';
-import BrowserDemo from 'site/theme/template/BrowserDemo';
+//import BrowserDemo from 'site/theme/template/BrowserDemo';
 import LoginModal from './modal.js';
 const SubMenu = Menu.SubMenu;
 
 let AntdBox = React.createClass({
   render(){
     return (
-      <BrowserDemo>
+      <div>
         <div className="ant-layout-aside">
           <aside className="ant-layout-sider">
             <div className="ant-layout-logo"></div>
@@ -54,7 +54,7 @@ let AntdBox = React.createClass({
             </div>
           </div>
         </div>
-      </BrowserDemo>
+      </div>
     )
   }
 
