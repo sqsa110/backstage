@@ -62,45 +62,44 @@ let Register = React.createClass({
     const { getFieldProps, getFieldError, isFieldValidating } = this.props.form;
     const nameProps = getFieldProps('name', {
       rules: [
-        { required: true, min: 5, message: '名字至少为 5 个字符' }
-      ],
+        { required: true, min: 5, message: '用户名至少为 5 个字符' }
+      ]
     });
     const emailProps = getFieldProps('email', {
       validate: [{
         rules: [
           { required: true },
         ],
-        trigger: 'onBlur',
+        trigger: 'onBlur'
       }, {
         rules: [
           { type: 'email', message: '请输入正确的邮箱地址' },
-          { validator: this.userExists },
+          { validator: this.userExists }
         ],
-        trigger: ['onBlur', 'onChange'],
-      }],
+        trigger: ['onBlur', 'onChange']
+      }]
     });
     const passwdProps = getFieldProps('passwd', {
       rules: [
         { required: true, whitespace: true, message: '请填写密码' },
-        { validator: this.checkPass },
-      ],
+        { validator: this.checkPass }
+      ]
     });
     const rePasswdProps = getFieldProps('rePasswd', {
       rules: [{
         required: true,
         whitespace: true,
-        message: '请再次输入密码',
+        message: '请再次输入密码'
       }, {
-        validator: this.checkPass2,
-      }],
+        validator: this.checkPass2
+      }]
     });
     const formItemLayout = {
       labelCol: { span: 7 },
-      wrapperCol: { span: 12 },
+      wrapperCol: { span: 12 }
     };
     return (
       <Form horizontal form={this.props.form}>
-        
         <FormItem
           {...formItemLayout}
           label="邮箱"
@@ -137,6 +136,7 @@ let Register = React.createClass({
         >
           <Input {...nameProps} placeholder="实时校验，输入 JasonWood 看看" />
         </FormItem>
+
       </Form>
     );
   },
