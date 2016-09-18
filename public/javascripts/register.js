@@ -104,7 +104,7 @@ let Register = React.createClass({
           {...formItemLayout}
           label="邮箱"
           hasFeedback
-          help={isFieldValidating('name') ? '校验中...' : (getFieldError('name') || []).join(', ')}
+          help={isFieldValidating('email') ? '校验中...' : (getFieldError('email') || []).join(', ')}
         >
           <Input {...emailProps} type="email" placeholder="onBlur 与 onChange 相结合" />
         </FormItem>
