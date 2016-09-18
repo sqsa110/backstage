@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import '../bin/encode.js';
 import LoginModal from './modal.js';
+import AntdBox from './antbox'; 
 import 'antd/dist/antd.css';
+import './antbox.css';
 
-ReactDOM.render(<LoginModal />, document.getElementById('login'));
+ReactDOM.render(<AntdBox />, document.getElementById('login'));
 

@@ -17,18 +17,35 @@ const LoginModal = React.createClass({
   handleOk() {
 
     this.setState({ loading: true });
-
+    var data = {};
     this.refs.registerb.validateFields((errors, values) => {
       if (!!errors) {
         console.log('Errors in form!!!');
         return;
       }
       console.log('Submit!!!');
-      console.log(values);
+      data = $.extend(data,values);
     });
 
-    this.setState({ loading: false, visible: false });
-    
+    var data.email = $.strEncode(data.email);
+    var data.passwd = $.strEncode(data.passwd);
+    $.ajax({
+      url: './register',
+      type: 'POST',
+      dataType: 'json',
+      data: data
+    })
+    .done(function() {
+      console.log("success");
+      this.setState({ loading: false, visible: false });
+    }.bind(this))
+    .fail(function() {
+      console.log("error");
+    })
+    .always(function() {
+      console.log("complete");
+    });
+        
   },
   handleCancel() {
     this.refs.registerb.resetFields();

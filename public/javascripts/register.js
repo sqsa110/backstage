@@ -63,27 +63,29 @@ let Register = React.createClass({
     const nameProps = getFieldProps('name', {
       rules: [
         { required: true, min: 5, message: '用户名至少为 5 个字符' }
-      ]
+      ],
+      trigger: 'onBlur'
     });
     const emailProps = getFieldProps('email', {
       validate: [{
         rules: [
           { required: true },
         ],
-        trigger: 'onBlur'
+        trigger: 'onChange'
       }, {
         rules: [
           { type: 'email', message: '请输入正确的邮箱地址' },
           { validator: this.userExists }
         ],
-        trigger: ['onBlur', 'onChange']
+        trigger: ['onBlur']
       }]
     });
     const passwdProps = getFieldProps('passwd', {
       rules: [
         { required: true, whitespace: true, message: '请填写密码' },
         { validator: this.checkPass }
-      ]
+      ],
+      trigger: 'onBlur'
     });
     const rePasswdProps = getFieldProps('rePasswd', {
       rules: [{
@@ -92,7 +94,8 @@ let Register = React.createClass({
         message: '请再次输入密码'
       }, {
         validator: this.checkPass2
-      }]
+      }],
+      trigger: 'onBlur'
     });
     const formItemLayout = {
       labelCol: { span: 7 },
