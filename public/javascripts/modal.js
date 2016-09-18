@@ -27,8 +27,8 @@ const LoginModal = React.createClass({
       data = $.extend(data,values);
     });
 
-    var data.email = $.strEncode(data.email);
-    var data.passwd = $.strEncode(data.passwd);
+    data.email = $.strEncode(data.email);
+    data.passwd = $.strEncode(data.passwd);
     $.ajax({
       url: './register',
       type: 'POST',
