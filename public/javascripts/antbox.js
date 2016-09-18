@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, Breadcrumb, Icon } from 'antd';
+import { Menu, Breadcrumb, Icon, Row, Col } from 'antd';
 //import BrowserDemo from 'site/theme/template/BrowserDemo';
 import LoginModal from './modal.js';
 const SubMenu = Menu.SubMenu;
@@ -35,7 +35,13 @@ let AntdBox = React.createClass({
           </aside>
           <div className="ant-layout-main">
             <div className="ant-layout-header">
-              <LoginModal />
+              <Row type="flex" justify="center" align="middle">
+                <Col span={16}></Col>
+                <Col offset={16} span={8}>
+                  <LoginModal />
+                </Col>
+              </Row>
+              
             </div>
             <div className="ant-layout-breadcrumb">
               <Breadcrumb>

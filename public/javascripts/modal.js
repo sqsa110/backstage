@@ -29,6 +29,8 @@ const LoginModal = React.createClass({
 
     data.email = $.strEncode(data.email);
     data.passwd = $.strEncode(data.passwd);
+    console.log(data);
+
     $.ajax({
       url: './register',
       type: 'POST',
@@ -41,6 +43,7 @@ const LoginModal = React.createClass({
     }.bind(this))
     .fail(function() {
       console.log("error");
+      this.setState({ loading: false });
     })
     .always(function() {
       console.log("complete");
@@ -55,7 +58,7 @@ const LoginModal = React.createClass({
     return (
       <div>
         <Button type="primary" onClick={this.showModal}>
-          显示对话框
+          注册
         </Button>
         <Modal ref="modal"
           visible={this.state.visible}
