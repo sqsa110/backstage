@@ -36,7 +36,7 @@ let AntdBox = React.createClass({
           </aside>
           <div className="ant-layout-main">
             <div className="ant-layout-header">
-              <Row type="flex" justify="center" align="middle">
+              <Row type="flex" justify="center" align="middle" style={{height:"100%"}}>
                 <Col span={1}>
                   <DemoBox value={150}></DemoBox>
                 </Col>
