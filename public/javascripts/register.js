@@ -32,8 +32,8 @@ let Register = React.createClass({
       callback();
     } else {
       setTimeout(() => {
-        if (value === 'JasonWood') {
-          callback([new Error('抱歉，该用户名已被占用。')]);
+        if (value === 'aaa@aaa.com') {
+          callback([new Error('抱歉，该邮箱已注册。')]);
         } else {
           callback();
         }
@@ -62,8 +62,7 @@ let Register = React.createClass({
     const { getFieldProps, getFieldError, isFieldValidating } = this.props.form;
     const nameProps = getFieldProps('name', {
       rules: [
-        { required: true, min: 5, message: '用户名至少为 5 个字符' },
-        { validator: this.userExists },
+        { required: true, min: 5, message: '名字至少为 5 个字符' }
       ],
     });
     const emailProps = getFieldProps('email', {
@@ -75,6 +74,7 @@ let Register = React.createClass({
       }, {
         rules: [
           { type: 'email', message: '请输入正确的邮箱地址' },
+          { validator: this.userExists },
         ],
         trigger: ['onBlur', 'onChange'],
       }],
@@ -100,19 +100,12 @@ let Register = React.createClass({
     };
     return (
       <Form horizontal form={this.props.form}>
-        <FormItem
-          {...formItemLayout}
-          label="用户名"
-          hasFeedback
-          help={isFieldValidating('name') ? '校验中...' : (getFieldError('name') || []).join(', ')}
-        >
-          <Input {...nameProps} placeholder="实时校验，输入 JasonWood 看看" />
-        </FormItem>
-
+        
         <FormItem
           {...formItemLayout}
           label="邮箱"
           hasFeedback
+          help={isFieldValidating('name') ? '校验中...' : (getFieldError('name') || []).join(', ')}
         >
           <Input {...emailProps} type="email" placeholder="onBlur 与 onChange 相结合" />
         </FormItem>
@@ -136,15 +129,21 @@ let Register = React.createClass({
             onContextMenu={noop} onPaste={noop} onCopy={noop} onCut={noop}
           />
         </FormItem>
+
+        <FormItem
+          {...formItemLayout}
+          label="名字"
+          hasFeedback
+        >
+          <Input {...nameProps} placeholder="实时校验，输入 JasonWood 看看" />
+        </FormItem>
       </Form>
     );
   },
 });
 
 Register = createForm()(Register);
-console.log(1111111111111111111111111);
-console.log(Register);
-console.log(2222222222222222222222222);
+
 module.exports = Register;
 
 //  <Button type="ghost" onClick={this.handleReset}>取消</Button>

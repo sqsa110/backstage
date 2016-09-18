@@ -17,16 +17,21 @@ const LoginModal = React.createClass({
   handleOk() {
 
     this.setState({ loading: true });
-    console.log(this.refs);
-    console.log(this.refs.registerb);
-    console.log(this.refs.registerb.handleSubmit);
-    console.log(this.refs.registerb.handleSubmit());
-    this.refs.register.handleSubmit();
+
+    this.refs.registerb.validateFields((errors, values) => {
+      if (!!errors) {
+        console.log('Errors in form!!!');
+        return;
+      }
+      console.log('Submit!!!');
+      console.log(values);
+    });
+
     this.setState({ loading: false, visible: false });
     
   },
   handleCancel() {
-    this.refs.registerb.handleReset();
+    this.refs.registerb.resetFields();
     this.setState({ visible: false });
   },
   render() {
