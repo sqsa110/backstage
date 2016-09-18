@@ -3,7 +3,7 @@ import { Menu, Breadcrumb, Icon, Row, Col } from 'antd';
 //import BrowserDemo from 'site/theme/template/BrowserDemo';
 import LoginModal from './modal.js';
 const SubMenu = Menu.SubMenu;
-const DemoBox = props => <p className={`height-${props.value}`}>{props.children}</p>;
+const DemoBox = props => <div className={`height-${props.value}`}>{props.children}</div>;
 
 let AntdBox = React.createClass({
   render(){
@@ -38,10 +38,12 @@ let AntdBox = React.createClass({
             <div className="ant-layout-header">
               <Row type="flex" justify="center" align="middle">
                 <Col span={1}>
-                  <DemoBox value={50}></DemoBox>
+                  <DemoBox value={150}></DemoBox>
                 </Col>
                 <Col offset={16} span={6}>
-                  <LoginModal />
+                  <DemoBox value={100}>
+                    <LoginModal />
+                  </DemoBox>
                 </Col>
               </Row>
               
