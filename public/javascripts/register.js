@@ -9,13 +9,14 @@ function noop() {
 }
 
 let Register = React.createClass({
-  handleReset(e) {
-    e.preventDefault();
+  handleReset() {
     this.props.form.resetFields();
   },
-
-  handleSubmit(e) {
+  handleCancel(e) {
     e.preventDefault();
+    this.modalHandleCancel();
+  },
+  handleSubmit() {
     this.props.form.validateFields((errors, values) => {
       if (!!errors) {
         console.log('Errors in form!!!');
@@ -93,11 +94,6 @@ let Register = React.createClass({
         validator: this.checkPass2,
       }],
     });
-    const textareaProps = getFieldProps('textarea', {
-      rules: [
-        { required: true, message: '真的不打算写点什么吗？' },
-      ],
-    });
     const formItemLayout = {
       labelCol: { span: 7 },
       wrapperCol: { span: 12 },
@@ -140,19 +136,6 @@ let Register = React.createClass({
             onContextMenu={noop} onPaste={noop} onCopy={noop} onCut={noop}
           />
         </FormItem>
-
-        <FormItem
-          {...formItemLayout}
-          label="备注"
-        >
-          <Input {...textareaProps} type="textarea" placeholder="随便写" id="textarea" name="textarea" />
-        </FormItem>
-
-        <FormItem wrapperCol={{ span: 12, offset: 7 }}>
-          <Button type="primary" onClick={this.handleSubmit}>确定</Button>
-          &nbsp;&nbsp;&nbsp;
-          <Button type="ghost" onClick={this.handleReset}>重置</Button>
-        </FormItem>
       </Form>
     );
   },
@@ -161,3 +144,13 @@ let Register = React.createClass({
 Register = createForm()(Register);
 
 module.exports = Register;
+
+//  <Button type="ghost" onClick={this.handleReset}>取消</Button>
+//  
+/*          
+        <FormItem wrapperCol={{ span: 12, offset: 7 }}>
+          <Button type="primary" onClick={this.handleSubmit}>确定</Button>
+          &nbsp;&nbsp;&nbsp;
+          <Button type="ghost" onClick={this.handleCancel}>取消</Button>
+        </FormItem>
+*/

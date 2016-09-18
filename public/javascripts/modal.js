@@ -15,12 +15,14 @@ const LoginModal = React.createClass({
     });
   },
   handleOk() {
+
     this.setState({ loading: true });
-    setTimeout(() => {
-      this.setState({ loading: false, visible: false });
-    }, 3000);
+    this.refs.register.handleSubmit();
+    this.setState({ loading: false, visible: false });
+    
   },
   handleCancel() {
+    this.refs.register.handleReset();
     this.setState({ visible: false });
   },
   render() {
@@ -31,7 +33,7 @@ const LoginModal = React.createClass({
         </Button>
         <Modal ref="modal"
           visible={this.state.visible}
-          title="对话框标题" onOk={this.handleOk} onCancel={this.handleCancel}
+          title="注册" onOk={this.handleOk} onCancel={this.handleCancel}
           footer={[
             <Button key="back" type="ghost" size="large" onClick={this.handleCancel}>返 回</Button>,
             <Button key="submit" type="primary" size="large" loading={this.state.loading} onClick={this.handleOk}>
@@ -39,7 +41,9 @@ const LoginModal = React.createClass({
             </Button>,
           ]}
         >
-          <Register />
+          <Register
+            ref="register"
+          />
         </Modal>
       </div>
     );
@@ -47,4 +51,3 @@ const LoginModal = React.createClass({
 });
 
 module.exports = LoginModal;
-
