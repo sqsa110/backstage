@@ -142,7 +142,9 @@ let Register = React.createClass({
 });
 
 Register = createForm()(Register);
-
+console.log(1111111111111111111111111);
+console.log(Register);
+console.log(2222222222222222222222222);
 module.exports = Register;
 
 //  <Button type="ghost" onClick={this.handleReset}>取消</Button>
