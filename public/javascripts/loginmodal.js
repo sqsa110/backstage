@@ -1,6 +1,7 @@
 import React from 'react';
 import { Modal, Button } from 'antd';
 import Login from './login.js';
+import Register from './register.js';
 
 const ButtonGroup = Button.Group;
 
