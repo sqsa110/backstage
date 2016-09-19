@@ -1,11 +1,9 @@
 import React from 'react';
-import { Menu, Breadcrumb, Icon, Row, Col, Button } from 'antd';
-//import BrowserDemo from 'site/theme/template/BrowserDemo';
+import { Menu, Breadcrumb, Icon, Row, Col } from 'antd';
 import LoginModal from './loginmodal.js';
-import RegisterModal from './registermodal.js';
+//import RegisterModal from './registermodal.js';
 const SubMenu = Menu.SubMenu;
 const DemoBox = props => <div className={`height-${props.value}`}>{props.children}</div>;
-const ButtonGroup = Button.Group;
 
 let AntdBox = React.createClass({
   render(){
@@ -40,10 +38,7 @@ let AntdBox = React.createClass({
             <div className="ant-layout-header">
               <Row type="flex" justify="center" align="middle" style={{height:"100%"}}>
                 <Col offset={20} span={4}>
-                    <ButtonGroup>
-                      <LoginModal />
-                      <RegisterModal />
-                    </ButtonGroup>
+                  <LoginModal />
                 </Col>
               </Row>
             </div>
