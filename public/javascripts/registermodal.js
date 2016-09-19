@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal, Button } from 'antd';
 import Register from './register.js';
 
-const LoginModal = React.createClass({
+const RegisterModal = React.createClass({
   getInitialState() {
     return {
       loading: false,
@@ -77,4 +77,4 @@ const LoginModal = React.createClass({
   },
 });
 
-module.exports = LoginModal;
+module.exports = RegisterModal;
