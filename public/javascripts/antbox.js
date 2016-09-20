@@ -1,6 +1,7 @@
 import React from 'react';
 import { Menu, Breadcrumb, Icon, Row, Col } from 'antd';
 import LoginModal from './loginmodal.js';
+import Tables from './tables.js';
 //import RegisterModal from './registermodal.js';
 const SubMenu = Menu.SubMenu;
 const DemoBox = props => <div className={`height-${props.value}`}>{props.children}</div>;
@@ -51,9 +52,7 @@ let AntdBox = React.createClass({
             </div>
             <div className="ant-layout-container">
               <div className="ant-layout-content">
-                <div style={{ height: 590 }}>
-                  内容区域
-                </div>
+                <Tables />
               </div>
             </div>
             <div className="ant-layout-footer">

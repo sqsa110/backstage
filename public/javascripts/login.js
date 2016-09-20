@@ -42,7 +42,8 @@ let Login = React.createClass({
 
     const passwdProps = getFieldProps('passwd', {
       rules: [
-        { required: true, whitespace: true, message: '请填写密码' }
+        { required: true, whitespace: true, message: '请填写密码' },
+        { min: 5, message: '密码至少为 5 个字符' }
       ],
       trigger: 'onBlur'
     });

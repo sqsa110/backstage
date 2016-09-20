@@ -41,7 +41,7 @@ const LoginModal = React.createClass({
     console.log(data);
 
     $.ajax({
-      url: './register',
+      url: './login',
       type: 'POST',
       dataType: 'json',
       data: data
