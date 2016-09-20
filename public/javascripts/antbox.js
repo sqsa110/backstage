@@ -16,8 +16,8 @@ let AntdBox = React.createClass({
             <Menu mode="inline" theme="dark"
               defaultSelectedKeys={['1']} defaultOpenKeys={['sub1']}>
               <SubMenu key="sub1" title={<span><Icon type="user" />导航一</span>} onTitleClick={function(obj){console.log(obj)}}>
-                <Menu.Item key="1" onClick={function(){console.log(1)}}>选项1</Menu.Item>
-                <Menu.Item key="2" onClick={function(){console.log(2)}}>选项2</Menu.Item>
+                <Menu.Item key="1"><a href="#abc">选项1</a></Menu.Item>
+                <Menu.Item key="2"><a href="#abcd">选项2</a></Menu.Item>
                 <Menu.Item key="3">选项3</Menu.Item>
                 <Menu.Item key="4">选项4</Menu.Item>
               </SubMenu>
