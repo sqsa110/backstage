@@ -71,7 +71,7 @@ let AntdBox = React.createClass({
       }
     ]
     var navBar = navData.map(function(item,index){
-      return <SubMenu key={item.key} title={tiem.title} />
+      return <SubMenu key={item.key} title={tiem.title} >
               {
                 item.data.map(function(val,i){
                   return <Menu.Item key={val.key} ><Link to={val.link}>{val.name}</Link></Menu.Item>
