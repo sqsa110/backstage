@@ -23,5 +23,5 @@ let routes = <Route path="/" component={AntdBox}>
         <Route path="abcd" component={About} />
       </Route>;
 
-ReactDOM.render(<routes />, document.getElementById('login'));
+ReactDOM.render(<Router routes={routes} history={hashHistory} />, document.getElementById('login'));
 
