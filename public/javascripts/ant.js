@@ -20,7 +20,7 @@ var About = React.createClass({
 let routes = <Route path="/" component={AntdBox}>
         <IndexRoute component={Tables}/>
         <Route path="abc" component={Tables} />
-        <Route path="abcd" component={About} />
+        <Route path="aaa" component={About} />
       </Route>;
 
 ReactDOM.render(<Router routes={routes} history={hashHistory} />, document.getElementById('login'));
