@@ -9,14 +9,15 @@ const DemoBox = props => <div className={`height-${props.value}`}>{props.childre
 
 let AntdBox = React.createClass({
   render(){
-    return (
-      <div>
-        <div className="ant-layout-aside">
-          <aside className="ant-layout-sider">
-            <div className="ant-layout-logo"></div>
-            <Menu mode="inline" theme="dark"
-              defaultSelectedKeys={['1']} defaultOpenKeys={['sub1']}>
-              <SubMenu key="sub1" title={<span><Icon type="user" />导航一</span>} onTitleClick={function(obj){console.log(obj)}}>
+/*
+    dataArr.map(function(item,index){
+      return <Item key={index} {...item} 
+            toggle={app.toggle.bind(this,item.id)} 
+            delectItem={app.delectItem.bind(this,item.id)}
+           />
+    }.bind(this))
+
+              <SubMenu key="sub1" title={<span><Icon type="user" />导航一</span>} >
                 <Menu.Item key="1"><Link to="/abc">选项1</Link></Menu.Item>
                 <Menu.Item key="2"><Link to="/aaa">选项2</Link></Menu.Item>
                 <Menu.Item key="3">选项3</Menu.Item>
@@ -34,6 +35,59 @@ let AntdBox = React.createClass({
                 <Menu.Item key="11">选项11</Menu.Item>
                 <Menu.Item key="12">选项12</Menu.Item>
               </SubMenu>
+*/
+    var navData = [
+      {
+        key : "sub1",
+        title : <span><Icon type="user" />导航一</span>,
+        data : [
+          {
+            key : "1",
+            link : "/abc",
+            name : "选项一"
+          },
+          {
+            key : "2",
+            link : "/aaa",
+            name : "选项二"
+          }
+        ]
+      },
+      {
+        key : "sub2",
+        title : <span><Icon type="laptop" />导航二</span>,
+        data : [
+          {
+            key : "3",
+            link : "/bbb",
+            name : "选项三"
+          },
+          {
+            key : "4",
+            link : "/ccc",
+            name : "选项四"
+          }
+        ]
+      }
+    ]
+    var navBar = navData.map(function(item,index){
+      return <SubMenu key={item.key} title={tiem.title} />
+              {
+                item.data.map(function(val,i){
+                  return <Menu.Item key={val.key} ><Link to={val.link}>{val.name}</Link></Menu.Item>
+                })
+              }
+              </SubMenu>
+    })
+
+    return (
+      <div>
+        <div className="ant-layout-aside">
+          <aside className="ant-layout-sider">
+            <div className="ant-layout-logo"></div>
+            <Menu mode="inline" theme="dark"
+              defaultSelectedKeys={['1']} defaultOpenKeys={['sub1']}>
+              { navBar }
             </Menu>
           </aside>
           <div className="ant-layout-main">
