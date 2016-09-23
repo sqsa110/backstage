@@ -11,7 +11,7 @@ import './antbox.css';
 var routersArr = [];
 for(var i=0,maxi=navData.length;i<maxi;i++){
   for(var j=0,maxj=navData[i].data.length;i<maxj;j++){
-    routersArr.push[<Route path=navData[i][j].link component={navData[i][j].component} /]
+    routersArr.push[<Route path=navData[i].data[j].link component={navData[i].data[j].component} /]
   }
 }
 
