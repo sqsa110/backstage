@@ -7,6 +7,7 @@ import Tables from './tables';
 import navData from './navData';
 import 'antd/dist/antd.css';
 import './antbox.css';
+console.log(navData);
 
 var routersArr = [];
 for(var i=0,maxi=navData.length;i<maxi;i++){
