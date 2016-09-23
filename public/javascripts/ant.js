@@ -11,9 +11,9 @@ console.log(navData);
 
 var routersArr = [];
 for(var i=0,maxi=navData.length;i<maxi;i++){
-  for(var j=0,maxj=navData[i].data.length;i<maxj;j++){
+  for(var j=0,maxj=navData[i].data.length;j<maxj;j++){
     console.log(navData[i].data[j]);
-    console.log(i,j)
+    console.log(i,j);
     routersArr.push(<Route path={navData[i].data[j].link} component={navData[i].data[j].component} />)
   }
 }
