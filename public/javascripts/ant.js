@@ -4,7 +4,7 @@ import { Router, Route, Link, hashHistory, IndexRoute } from 'react-router';
 import '../bin/encode.js';
 import AntdBox from './antbox';
 import Tables from './tables';
-import navData from './navData';
+import navData from './navdata';
 import 'antd/dist/antd.css';
 import './antbox.css';
 console.log(navData);
