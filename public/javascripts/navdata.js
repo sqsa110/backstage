@@ -1,3 +1,4 @@
+import React from 'react';
 import Tables from './tables';
 import { Icon } from 'antd';
  
